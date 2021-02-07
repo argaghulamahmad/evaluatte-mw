@@ -41,4 +41,7 @@ export default {
 span {
   font-size: 80%;
 }
+.v-item-group.v-bottom-navigation .v-btn {
+  min-width: 0;
+}
 </style>
