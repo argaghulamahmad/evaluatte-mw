@@ -30,9 +30,6 @@
 <script>
 export default {
   name: 'BottomNavigation',
-  props: {
-    value: {}
-  },
   data: () => (
       {
         value: 'home',

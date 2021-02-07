@@ -4,11 +4,21 @@
 
     </div>
     <div style="
-        position: fixed;
-        bottom: 0;
-        min-width: 100%;
+      height: 56px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding-bottom: 56px;
+      background-color: rgb(255, 255, 255);
+      z-index: 20;
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      align-items: flex-start;
     ">
-      <BottomNavigation :value="value"/>
+      <BottomNavigation/>
     </div>
   </div>
 </template>
