@@ -1,6 +1,13 @@
 <template>
   <div id="app">
     <div>
+
+    </div>
+    <div style="
+        position: fixed;
+        bottom: 0;
+        min-width: 100%;
+    ">
       <v-bottom-navigation v-model="value">
         <v-btn value="recent">
           <span>Recent</span>
@@ -29,7 +36,11 @@
 export default {
   name: 'App',
   components: {},
-  data: () => ({value: 'recent'}),
+  data: () => (
+      {
+        value: 'recent',
+      }
+  ),
 }
 </script>
 
