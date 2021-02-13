@@ -149,12 +149,30 @@
                 </div>
               </v-expansion-panel-content>
             </v-expansion-panel>
-
-
           </v-expansion-panels>
         </div>
 
-        <div style="margin-top: 50%;"/>
+        <v-row class="mt-4 mx-1">
+          <v-col cols="6">
+          </v-col>
+          <v-col cols="6">
+            <v-btn
+                outlined
+                text
+                style="
+                        min-width: 100%;
+                        background: #FCCF14;
+                        color: #FFFFFF;
+                        border: none;
+                      "
+                to="/order"
+            >
+              Pilih Jadwal
+            </v-btn>
+          </v-col>
+        </v-row>
+
+        <div style="margin-top: 20%;"/>
       </div>
     </v-card>
   </div>

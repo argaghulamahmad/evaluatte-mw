@@ -25,12 +25,6 @@
 
         <v-icon>mdi-home</v-icon>
       </v-btn>
-
-      <v-btn value="schedules" to="/schedules">
-        <span>Jadwal</span>
-
-        <v-icon>mdi-calendar</v-icon>
-      </v-btn>
     </v-bottom-navigation>
   </div>
 </template>
