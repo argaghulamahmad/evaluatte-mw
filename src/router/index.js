@@ -1,8 +1,9 @@
 import VueRouter from "vue-router";
-import Consultants from "@/pages/Consultants";
+import Checkout from "@/pages/Checkout";
 import Consultant from "@/pages/Consultant";
-import Order from "@/pages/Order";
+import Consultants from "@/pages/Consultants";
 import Home from "@/pages/Home";
+import Order from "@/pages/Order";
 
 const router = new VueRouter({
   routes: [
@@ -25,6 +26,11 @@ const router = new VueRouter({
       path: '/order',
       name: 'Order',
       component: Order
+    },
+    {
+      path: '/checkout',
+      name: 'Checkout',
+      component: Checkout
     },
   ]
 })

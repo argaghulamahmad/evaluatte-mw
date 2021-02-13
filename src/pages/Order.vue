@@ -77,7 +77,7 @@
                         color: #FFFFFF;
                         border: none;
                       "
-                to="/order"
+                to="/checkout"
             >
               Isi Data Diri
             </v-btn>
