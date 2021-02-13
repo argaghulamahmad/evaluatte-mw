@@ -41,6 +41,8 @@
               min="2016-06-15"
               max="2018-03-20"
 
+              color="#FCCF14"
+
               full-width
           ></v-date-picker>
         </div>
@@ -56,6 +58,8 @@
               scrollable
               min="9:30"
               max="22:15"
+
+              color="#FCCF14"
 
               full-width
           ></v-time-picker>
