@@ -103,7 +103,7 @@
                         color: #FFFFFF;
                         border: none;
                       "
-                      to="/order"
+                      to="/consultant"
                   >
                     Lihat Profil
                   </v-btn>

@@ -53,7 +53,6 @@
               v-model="time"
               :allowed-hours="allowedHours"
               :allowed-minutes="allowedMinutes"
-              class="mt-4"
               format="24hr"
               scrollable
               min="9:30"
