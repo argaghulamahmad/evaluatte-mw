@@ -1,11 +1,8 @@
 <template>
   <div id="app">
     <v-app>
-      <TopNavigation/>
-      <div style="margin-top: 72px;"></div>
       <router-view>
       </router-view>
-      <div style="margin-top: 72px;"></div>
       <BottomNavigation/>
     </v-app>
   </div>
@@ -14,11 +11,10 @@
 <script>
 
 import BottomNavigation from "@/components/BottomNavigation";
-import TopNavigation from "@/components/TopNavigation";
 
 export default {
   name: 'App',
-  components: {TopNavigation, BottomNavigation},
+  components: {BottomNavigation},
 }
 </script>
 

@@ -1,5 +1,6 @@
 import VueRouter from "vue-router";
 import Consultants from "@/pages/Consultants";
+import Order from "@/pages/Order";
 
 const router = new VueRouter({
   routes: [
@@ -7,7 +8,13 @@ const router = new VueRouter({
       path: '/consultants',
       name: 'Consultants',
       component: Consultants
-    }
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order
+    },
+
   ]
 })
 
