@@ -35,10 +35,21 @@
           <v-row>
             <v-col cols="6">
               <v-btn
-                  outlined
                   text
+                  depressed
+                  disabled
+                  style="padding-right: 0;"
               >
-                Lihat Profil
+                <v-col cols="6">
+                  <p>Rp. 100.000</p>
+                </v-col>
+                <v-col cols="6">
+                  <v-icon style="
+                    caret-color: rgb(252, 207, 20) !important;
+                    color: rgb(252, 207, 20) !important;
+                  ">mdi-star</v-icon>
+                  <p style="display: inline-block; vertical-align: middle;">4.9</p>
+                </v-col>
               </v-btn>
             </v-col>
             <v-col cols="6">
@@ -150,5 +161,9 @@ export default {
 
 .v-btn {
   min-width: 100% !important;
+}
+
+p {
+  color: #000000;
 }
 </style>
