@@ -26,7 +26,7 @@
           >mdi-chevron-left</v-icon>
         </v-app-bar-nav-icon>
 
-        <v-toolbar-title>Konsultasi</v-toolbar-title>
+        <v-toolbar-title>Pilih Jadwal</v-toolbar-title>
       </v-app-bar>
       <div
           class="overflow-y-auto"
@@ -76,7 +76,7 @@
                       "
                 to="/order"
             >
-              Lanjut Daftar
+              Isi Data Diri
             </v-btn>
           </v-col>
         </v-row>
