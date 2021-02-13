@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Consultants/>
     <BottomNavigation/>
   </div>
 </template>
@@ -7,10 +8,11 @@
 <script>
 
 import BottomNavigation from "@/components/BottomNavigation";
+import Consultants from "@/components/Consultants";
 
 export default {
   name: 'App',
-  components: {BottomNavigation},
+  components: {BottomNavigation, Consultants},
 }
 </script>
 
