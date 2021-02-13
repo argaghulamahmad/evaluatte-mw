@@ -17,6 +17,15 @@
           ></v-img>
         </template>
 
+        <v-app-bar-nav-icon>
+          <v-icon @click="
+            hasHistory()
+            ? $router.go(-1)
+            : $router.push('/')
+          "
+          >mdi-chevron-left</v-icon>
+        </v-app-bar-nav-icon>
+
         <v-toolbar-title>Profil Konsultan</v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -258,15 +267,7 @@ export default {
     }
   },
   methods: {
-    // Create an array the length of our items
-    // with all values as true
-    all() {
-      this.panel = [...Array(this.profile_info).keys()].map((k, i) => i)
-    },
-    // Reset the panel
-    none() {
-      this.panel = []
-    },
+    hasHistory: () => window.history.length > 2
   },
 }
 </script>
