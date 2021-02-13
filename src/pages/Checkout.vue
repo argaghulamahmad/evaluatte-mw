@@ -96,6 +96,53 @@
                 ></v-file-input>
               </v-card-text>
               <v-divider class="mt-12"></v-divider>
+              <v-expansion-panels
+                  v-model="panel"
+                  multiple
+              >
+                <v-expansion-panel>
+                  <v-expansion-panel-header><h4>Prosedur Standar Operasional</h4></v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <div>
+                      <div class="mb-4">
+                        <h4>Tujuan</h4>
+                        <p>
+                          Memberikan pemahaman tentang CV dan teknik interview yang tepat, serta membuat peluang yang lebih besar untuk diterima di suatu pekerjaan.
+                        </p>
+                      </div>
+                      <div class="mb-4">
+                        <h4>Kewajiban</h4>
+                        <div>
+                          <ul>
+                            <li>User wajib mendaftar dan melakukan pembayaran sebelum melakukan konsultasi (1 hari sebelumnya)</li>
+                            <li>User harus menyiapkan segala pertanyaan, bahan diskusi, dll sebelum sesi konsultasi, agar sesi konsultasi dapat berjalan efektif</li>
+                            <li>User wajib membaca SOP yang berlaku</li>
+                            <li>User harus memilih jadwal konsultasi sesuai dengan jadwal konsultan</li>
+                            <li>User wajib berkomunikasi dengan sopan</li>
+                            <li>User hanya dapat menanyakan pertanyaan sesuai konteks konsultasi</li>
+                            <li>Apabila user menanyakan pertanyaan di luar konteks konsultasi, maka user akan mendapatkan penalti.</li>
+                            <li>Apabila user mendapatkan penalti sebanyak 3x, maka konsultan berhak mengakhiri sesi konsultasi meskipun waktu konsultasi belum berakhir.</li>
+                            <li>User wajib mengisi dan menilai kinerja konsultan</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="mb-4">
+                        <h4>Hak</h4>
+                        <div>
+                          <ul>
+                            <li>User berhak memilih konsultan yang diinginkan (selama konsultan tersebut masih tersedia).</li>
+                            <li>User berhak bertanya tentang apa pun (selama masih dalam konteks konsultasi).</li>
+                            <li>User berhak mendapat waktu konsultasi sesuai dengan yang telah ditentukan.</li>
+                            <li>User berhak memberi penilaian (kepada konsultan) sesuai dengan yang dirasakan selama sesi konsultasi.</li>
+                            <li>User berhak mendapatkan resume hasil konsultasi.</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+              </v-expansion-panels>
+              <v-divider class="mt-12"></v-divider>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-slide-x-reverse-transition>
@@ -135,14 +182,6 @@
           </v-col>
         </v-row>
 
-        <v-row class="mt-4 mx-1">
-          <v-col cols="6">
-          </v-col>
-          <v-col cols="6">
-
-          </v-col>
-        </v-row>
-
         <div style="margin-top: 20%;"/>
       </div>
     </v-card>
@@ -161,6 +200,7 @@ export default {
       },
     ],
 
+    panel: [],
 
     name: null,
     email: null,
