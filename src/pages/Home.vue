@@ -69,7 +69,7 @@
         </div>
         <v-carousel
             cycle
-            height="400"
+            height="230"
             hide-delimiters
             :show-arrows="false"
         >
@@ -112,6 +112,54 @@
             </v-card>
           </v-carousel-item>
         </v-carousel>
+      </div>
+      <div class="text-center">
+        <p>Evaluatte.com • 2021</p>
+      </div>
+      <div class="flex" style="margin: 0;">
+        <v-row>
+          <v-col>
+            <a style="
+                  font-size: 15px;
+                  width: 40px;
+                  height: 40px;
+                  display: inline-block;
+                  text-align: center;
+                  background: 0 0;
+                  -webkit-border-radius: 50%;
+                  -moz-border-radius: 50%;
+                  border-radius: 50%;
+                  line-height: 40px !important;
+                  margin-right: 7px;
+                  color: #fff !important;
+                  background: #FCCF14;
+                  border-color: transparent;
+                "
+               href="https://www.facebook.com/evaluattecom">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </v-col>
+          <v-col>
+            <a class="social_links" href="https://www.instagram.com/evaluatte_com/">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </v-col>
+          <v-col>
+            <a class="social_links" href="https://www.youtube.com/channel/UCfmb7kcDMjW9lJpfADl132Q">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </v-col>
+          <v-col>
+            <a class="social_links" href="https://www.linkedin.com/company/evaluatte">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </v-col>
+          <v-col>
+            <a class="social_links" href="https://www.tiktok.com/@evaluatte_com?lang=en">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </v-col>
+        </v-row>
       </div>
       <div style="margin-top: 20%;"/>
     </div>
@@ -161,5 +209,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
