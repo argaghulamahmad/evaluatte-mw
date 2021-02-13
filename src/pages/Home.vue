@@ -113,12 +113,12 @@
           </v-carousel-item>
         </v-carousel>
       </div>
-      <div class="text-center">
-        <p>Evaluatte.com • 2021</p>
+      <div class="mb-4 text-center">
+        <p>Evaluatte.com • {{ this.year }}</p>
       </div>
-      <div class="flex" style="margin: 0;">
+      <div class="mx-8 flex" style="margin: 0;">
         <v-row>
-          <v-col>
+          <v-col v-for="(item, index) in social_links" :key="`social-${index}`">
             <a style="
                   font-size: 15px;
                   width: 40px;
@@ -130,33 +130,13 @@
                   -moz-border-radius: 50%;
                   border-radius: 50%;
                   line-height: 40px !important;
-                  margin-right: 7px;
                   color: #fff !important;
                   background: #FCCF14;
                   border-color: transparent;
                 "
-               href="https://www.facebook.com/evaluattecom">
-              <i class="fab fa-facebook"></i>
-            </a>
-          </v-col>
-          <v-col>
-            <a class="social_links" href="https://www.instagram.com/evaluatte_com/">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </v-col>
-          <v-col>
-            <a class="social_links" href="https://www.youtube.com/channel/UCfmb7kcDMjW9lJpfADl132Q">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </v-col>
-          <v-col>
-            <a class="social_links" href="https://www.linkedin.com/company/evaluatte">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </v-col>
-          <v-col>
-            <a class="social_links" href="https://www.tiktok.com/@evaluatte_com?lang=en">
-              <i class="fab fa-tiktok"></i>
+               class="px-0"
+               :href="item.url">
+              <i :class="item.icon"></i>
             </a>
           </v-col>
         </v-row>
@@ -202,7 +182,35 @@ export default {
           client_name: 'Romi',
           client_title: 'Fresh Graduate',
         },
+      ],
+      social_links: [
+        {
+          url: "https://www.facebook.com/evaluattecom",
+          icon: "fab fa-facebook",
+        },
+          {
+          url: "https://www.instagram.com/evaluatte_com/",
+          icon: "fab fa-instagram",
+        },
+          {
+          url: "https://www.youtube.com/channel/UCfmb7kcDMjW9lJpfADl132Q",
+          icon: "fab fa-youtube",
+        },
+          {
+          url: "https://www.linkedin.com/company/evaluatte",
+          icon: "fab fa-linkedin-in",
+        },
+          {
+          url: "https://www.tiktok.com/@evaluatte_com?lang=en",
+          icon: "fab fa-tiktok",
+        }
       ]
+    }
+  },
+  computed: {
+    year() {
+      const date = new Date();
+      return date.getFullYear();
     }
   },
 }
