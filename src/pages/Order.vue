@@ -52,7 +52,7 @@
           <v-time-picker
               v-model="time"
               :allowed-hours="allowedHours"
-              :allowed-minutes="allowedMinutes"
+              :allowed-minutes="allowedStep"
               format="24hr"
               scrollable
               min="9:30"
@@ -95,9 +95,16 @@ export default {
   name: "Order",
   data: () => ({
     date: '2018-03-02',
+
+    time: '11:15',
+    timeStep: '10:10'
   }),
   methods: {
     allowedDates: val => parseInt(val.split('-')[2], 10) % 2 === 0,
+
+    allowedHours: v => v > 9 && v < 21,
+    allowedStep: m => m % 30 === 0,
+
     hasHistory: () => window.history.length > 2
   },
 }
