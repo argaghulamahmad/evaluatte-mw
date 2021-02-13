@@ -2,7 +2,6 @@
   <div>
     <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
       <v-card
-          class="ma-2"
           outlined
       >
         <v-list-item three-line>
