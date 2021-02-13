@@ -1,15 +1,12 @@
 <template>
   <div id="app">
-    <div>
-
-    </div>
     <BottomNavigation/>
   </div>
 </template>
 
 <script>
 
-import BottomNavigation from "@/BottomNavigation";
+import BottomNavigation from "@/components/BottomNavigation";
 
 export default {
   name: 'App',
