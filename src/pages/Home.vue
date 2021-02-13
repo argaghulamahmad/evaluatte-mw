@@ -62,6 +62,12 @@
           </v-col>
         </v-row>
       </div>
+      <div class="mx-4">
+        <div style="min-width: 100%;" class="mb-4">
+          <h3 class="text-center">Testimoni</h3>
+        </div>
+
+      </div>
       <div style="margin-top: 20%;"/>
     </div>
   </v-card>
@@ -89,6 +95,15 @@ export default {
             icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+webinar+1.png',
             name: 'Webinar',
           },
+      ],
+      testimonials: [
+        {
+          content: 'Setelah saya konsultasi dengan Teguh tentang CV, saya jadi paham akan kualifikasi CV saya ' +
+              'dan saya jadi lebih bisa mempersiapkan CV saya kedepan agar bisa diterima perusahaan impian saya!',
+          client_img: 'https://evaluatte-system.s3.amazonaws.com/media/public/pandu.jpg',
+          client_name: 'PANDU AJI WIJAYA',
+          client_title: 'Fresh Graduate',
+        }
       ]
     }
   },
