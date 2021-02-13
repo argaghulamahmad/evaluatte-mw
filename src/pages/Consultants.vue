@@ -31,7 +31,7 @@
       <div
         class="overflow-y-auto"
       >
-        <div style="margin-top: 60%;"/>
+        <div style="margin-top: 100%;"/>
 
         <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
           <v-card
@@ -113,7 +113,7 @@
           </v-card>
         </div>
 
-        <div style="margin-top: 20%;"/>
+        <div style="margin-top: 50%;"/>
       </div>
     </v-card>
   </div>
