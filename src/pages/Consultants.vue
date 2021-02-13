@@ -5,17 +5,11 @@
           outlined
       >
         <v-list-item three-line>
-          <v-list-item-content>
-            <v-list-item-title class="headline">
-              {{ consultant.full_name }}
-            </v-list-item-title>
-            <v-list-item-subtitle>{{ consultant.company_name }}</v-list-item-subtitle>
-          </v-list-item-content>
-
           <v-list-item-avatar
               tile
               size="60"
               color="grey"
+              min-width="30%"
           >
             <img
                 v-if="consultant.profile_image"
@@ -23,6 +17,18 @@
                 :src="consultant.profile_image"
             >
           </v-list-item-avatar>
+          <div style="padding-left: 5%;">
+            <v-list-item-content>
+              <v-list-item-title class="headline">
+                {{ consultant.full_name }}
+              </v-list-item-title>
+              <v-list-item-subtitle>{{ consultant.company_name }} | {years_of_experience} Tahun</v-list-item-subtitle>
+              <v-list-item-subtitle>
+                <v-icon size="12">mdi-briefcase</v-icon>
+                {industry}
+              </v-list-item-subtitle>
+            </v-list-item-content>
+          </div>
         </v-list-item>
 
         <v-card-actions class="">
@@ -39,6 +45,11 @@
               <v-btn
                   outlined
                   text
+                  style="
+                    background: #FCCF14;
+                    box-shadow: 0 4px 4px rgba(112, 112, 112, 0.25);
+                    color: #ffffff;
+                  "
               >
                 Konsultasi
               </v-btn>
@@ -133,7 +144,7 @@ export default {
 <style scoped>
 .v-sheet.v-card {
   margin: 5% !important;
-  box-shadow: rgba(49, 53, 59, 0.12) 0 1px 6px 0 !important;
+  box-shadow: 0 4px 4px rgba(112, 112, 112, 0.25) !important;
   max-width: 90%;
 }
 
