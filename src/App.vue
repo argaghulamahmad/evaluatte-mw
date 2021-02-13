@@ -1,11 +1,13 @@
 <template>
   <div id="app">
-    <TopNavigation/>
-    <div style="margin-top: 72px;"></div>
-    <router-view>
-    </router-view>
-    <div style="margin-top: 72px;"></div>
-    <BottomNavigation/>
+    <v-app>
+      <TopNavigation/>
+      <div style="margin-top: 72px;"></div>
+      <router-view>
+      </router-view>
+      <div style="margin-top: 72px;"></div>
+      <BottomNavigation/>
+    </v-app>
   </div>
 </template>
 
