@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Consultants/>
+    <router-view>
+    </router-view>
+
     <BottomNavigation/>
   </div>
 </template>
@@ -8,11 +10,10 @@
 <script>
 
 import BottomNavigation from "@/components/BottomNavigation";
-import Consultants from "@/components/Consultants";
 
 export default {
   name: 'App',
-  components: {BottomNavigation, Consultants},
+  components: {BottomNavigation},
 }
 </script>
 

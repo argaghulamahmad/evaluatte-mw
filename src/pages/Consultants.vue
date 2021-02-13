@@ -3,7 +3,7 @@
     <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
       <v-card
           outlined
-          max-width="100%"
+          max-width="90%"
       >
         <v-list-item three-line>
           <v-list-item-content>

@@ -15,30 +15,21 @@
       align-items: flex-start;
     ">
     <v-bottom-navigation v-model="value">
-      <v-btn value="consultants">
+      <v-btn value="consultants" to="/consultants">
         <span>Konsultan</span>
 
         <v-icon>mdi-account-group-outline</v-icon>
       </v-btn>
-      <v-btn value="schedules">
-        <span>Jadwal</span>
-
-        <v-icon>mdi-calendar</v-icon>
-      </v-btn>
-      <v-btn value="home">
+      <v-btn value="home" to="/">
         <span>Home</span>
 
         <v-icon>mdi-home</v-icon>
       </v-btn>
-      <v-btn value="cart">
-        <span>Transaksi</span>
 
-        <v-icon>mdi-cart</v-icon>
-      </v-btn>
-      <v-btn value="profile">
-        <span>Profil</span>
+      <v-btn value="schedules" to="/schedules">
+        <span>Jadwal</span>
 
-        <v-icon>mdi-account</v-icon>
+        <v-icon>mdi-calendar</v-icon>
       </v-btn>
     </v-bottom-navigation>
   </div>
