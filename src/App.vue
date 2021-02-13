@@ -2,7 +2,7 @@
   <div id="app">
     <router-view>
     </router-view>
-
+    <div style="margin-top: 64px;"></div>
     <BottomNavigation/>
   </div>
 </template>
@@ -18,13 +18,6 @@ export default {
 </script>
 
 <style>
-@media (min-width: 576px) {
-  #app {
-    border-left: 1px solid #e9ecef;
-    border-right: 1px solid #e9ecef;
-  }
-}
-
 #app {
   max-width: 500px;
   margin: 0 auto;

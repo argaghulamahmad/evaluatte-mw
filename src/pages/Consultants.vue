@@ -3,7 +3,6 @@
     <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
       <v-card
           outlined
-          max-width="90%"
       >
         <v-list-item three-line>
           <v-list-item-content>
@@ -15,7 +14,7 @@
 
           <v-list-item-avatar
               tile
-              size="80"
+              size="60"
               color="grey"
           >
             <img
@@ -132,5 +131,13 @@ export default {
 </script>
 
 <style scoped>
+.v-sheet.v-card {
+  margin: 5% !important;
+  box-shadow: rgba(49, 53, 59, 0.12) 0 1px 6px 0 !important;
+  max-width: 90%;
+}
 
+.v-btn {
+  min-width: 100% !important;
+}
 </style>
