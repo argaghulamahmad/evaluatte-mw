@@ -3,23 +3,7 @@
     <div>
 
     </div>
-    <div style="
-      height: 56px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      padding-bottom: 56px;
-      background-color: rgb(255, 255, 255);
-      z-index: 20;
-      display: flex;
-      max-width: 500px;
-      margin: 0 auto;
-      -webkit-box-pack: justify;
-      justify-content: space-between;
-      align-items: flex-start;
-    ">
-      <BottomNavigation/>
-    </div>
+    <BottomNavigation/>
   </div>
 </template>
 
