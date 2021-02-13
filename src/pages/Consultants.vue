@@ -56,7 +56,7 @@
                     :src="consultant.profile_image"
                 >
               </v-list-item-avatar>
-              <div style="padding-left: 5%;">
+              <div>
                 <v-list-item-content>
                   <v-list-item-title class="heading-3">
                     {{ consultant.full_name }}
