@@ -3,12 +3,11 @@
     <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
       <v-card
           outlined
+          max-width="100%"
       >
         <v-list-item three-line>
           <v-list-item-content>
-            <div class="overline mb-4">
-            </div>
-            <v-list-item-title class="headline mb-1">
+            <v-list-item-title class="headline">
               {{ consultant.full_name }}
             </v-list-item-title>
             <v-list-item-subtitle>{{ consultant.company_name }}</v-list-item-subtitle>
