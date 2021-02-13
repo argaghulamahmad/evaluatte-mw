@@ -21,11 +21,11 @@
     <div
         class="overflow-y-auto"
     >
-      <div style="margin-top: 35%;"/>
-      <div class="mx-4">
+      <div style="margin-top: 45%;"/>
+      <div class="mx-4 mb-4">
         <v-carousel
             cycle
-            height="200"
+            height="230"
             hide-delimiters
             :show-arrows="false"
         >
@@ -37,7 +37,7 @@
           </v-carousel-item>
         </v-carousel>
       </div>
-      <div class="mx-4">
+      <div class="mx-4 mb-8">
         <v-row no-gutters>
           <div style="min-width: 100%">
             <h3 class="text-center">Layanan Kami</h3>
@@ -53,11 +53,12 @@
                 class="text-center"
             >
               <div
-                  class="mx-4 elevation-1 rounded-circle text-center"
+                  class="mx-4 rounded-circle text-center"
+                  style="box-shadow: rgb(202 211 225) 0 1px 4px 0;"
               >
                 <v-img :src="service.icon"></v-img>
               </div>
-              <h6 class="mt-4">{{service.name}}</h6>
+              <h6 class="mt-4">{{ service.name }}</h6>
             </div>
           </v-col>
         </v-row>
@@ -66,7 +67,51 @@
         <div style="min-width: 100%;" class="mb-4">
           <h3 class="text-center">Testimoni</h3>
         </div>
+        <v-carousel
+            cycle
+            height="400"
+            hide-delimiters
+            :show-arrows="false"
+        >
+          <v-carousel-item
+              v-for="(testimonial, i) in testimonials"
+              :key="i"
+          >
+            <v-card
+                class="mx-auto"
+                color="#ffffff"
+                max-width="400"
+            >
+              <v-card-text class="headline font-weight-bold black--text subtitle-1">
+                "{{ testimonial.content }}"
+              </v-card-text>
 
+              <v-card-actions>
+                <v-list-item class="grow">
+                  <v-list-item-avatar>
+                    <v-img
+                        class="elevation-6"
+                        :alt="testimonial.client_name"
+                        :src="testimonial.client_img"
+                    ></v-img>
+                  </v-list-item-avatar>
+
+                  <v-list-item-content>
+                    <v-list-item-title class="black--text">{{ testimonial.client_name }}</v-list-item-title>
+                  </v-list-item-content>
+
+                  <v-row
+                      align="center"
+                      justify="end"
+                      class="black--text"
+                  >
+                    {{ testimonial.client_title }}
+                  </v-row>
+                </v-list-item>
+              </v-card-actions>
+            </v-card>
+          </v-carousel-item>
+        </v-carousel>
       </div>
       <div style="margin-top: 20%;"/>
     </div>
@@ -83,27 +128,32 @@ export default {
         'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/banner+interview.png',
       ],
       services: [
-          {
-            icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+cv+1.png',
-            name: 'Konsultasi CV',
-          },
-          {
-            icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+interviw+1.png',
-            name: 'Konsultasi Interview',
-          },
-          {
-            icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+webinar+1.png',
-            name: 'Webinar',
-          },
+        {
+          icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+cv+1.png',
+          name: 'Konsultasi CV',
+        },
+        {
+          icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+interviw+1.png',
+          name: 'Konsultasi Interview',
+        },
+        {
+          icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+webinar+1.png',
+          name: 'Webinar',
+        },
       ],
       testimonials: [
         {
-          content: 'Setelah saya konsultasi dengan Teguh tentang CV, saya jadi paham akan kualifikasi CV saya ' +
-              'dan saya jadi lebih bisa mempersiapkan CV saya kedepan agar bisa diterima perusahaan impian saya!',
+          content: 'Setelah konsultasi di Evaluatte jadi paham banget. Terima kasih Evaluatte!',
           client_img: 'https://evaluatte-system.s3.amazonaws.com/media/public/pandu.jpg',
-          client_name: 'PANDU AJI WIJAYA',
+          client_name: 'Dinda',
           client_title: 'Fresh Graduate',
-        }
+        },
+        {
+          content: 'Penjelasan yang dikasih sangat rinci. Beruntung konsultasi di sini.',
+          client_img: 'https://evaluatte-system.s3.amazonaws.com/media/public/pandu.jpg',
+          client_name: 'Romi',
+          client_title: 'Fresh Graduate',
+        },
       ]
     }
   },
