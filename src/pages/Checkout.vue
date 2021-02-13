@@ -142,6 +142,12 @@
                   </v-expansion-panel-content>
                 </v-expansion-panel>
               </v-expansion-panels>
+              <div class="mx-4">
+                <v-checkbox
+                    v-model="isTocAccepted"
+                    label="Saya menerima semua syarat dan ketentuan yang berlaku."
+                ></v-checkbox>
+              </div>
               <v-divider class="mt-12"></v-divider>
               <v-card-actions>
                 <v-spacer></v-spacer>
@@ -209,6 +215,7 @@ export default {
     meetAt: 'Rabu, 21.00 - 22.00',
     problem: null,
     resumeUrl: null,
+    isTocAccepted: false,
 
     errorMessages: null,
     formHasErrors: null
