@@ -1,0 +1,39 @@
+{
+  "count": 8,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "name": "Ruangguru",
+      "industry": "Education"
+    },
+    {
+      "name": "Bank Mayapada",
+      "industry": "Finance"
+    },
+    {
+      "name": "Bank Amar",
+      "industry": "Finance"
+    },
+    {
+      "name": "IDN Media",
+      "industry": "Digital Media"
+    },
+    {
+      "name": "IDN Media",
+      "industry": "Digital Media"
+    },
+    {
+      "name": "Gojek",
+      "industry": "Transportation"
+    },
+    {
+      "name": "Kitabisa",
+      "industry": "Digital"
+    },
+    {
+      "name": "Kompas Gramedia",
+      "industry": "Digital Media"
+    }
+  ]
+}
