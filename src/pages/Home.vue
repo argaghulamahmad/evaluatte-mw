@@ -21,10 +21,22 @@
     <div
         class="overflow-y-auto"
     >
-      <div style="margin-top: 60%;"/>
-
-
-
+      <div style="margin-top: 35%;"/>
+      <div class="mx-4">
+        <v-carousel
+            cycle
+            height="200"
+            hide-delimiters
+            :show-arrows="false"
+        >
+          <v-carousel-item
+              v-for="(banner, i) in banners"
+              :key="i"
+          >
+            <v-img contain :src="banner"></v-img>
+          </v-carousel-item>
+        </v-carousel>
+      </div>
       <div style="margin-top: 20%;"/>
     </div>
   </v-card>
@@ -32,7 +44,15 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Home",
+  data() {
+    return {
+      banners: [
+        'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/banner+cv.png',
+        'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/banner+interview.png',
+      ]
+    }
+  },
 }
 </script>
 
