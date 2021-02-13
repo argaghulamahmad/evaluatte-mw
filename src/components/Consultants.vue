@@ -28,14 +28,25 @@
           </v-list-item-avatar>
         </v-list-item>
 
-        <v-card-actions>
-          <v-btn
-              outlined
-              rounded
-              text
-          >
-            Button
-          </v-btn>
+        <v-card-actions class="">
+          <v-row>
+            <v-col cols="6">
+              <v-btn
+                  outlined
+                  text
+              >
+                Lihat Profil
+              </v-btn>
+            </v-col>
+            <v-col cols="6">
+              <v-btn
+                  outlined
+                  text
+              >
+                Konsultasi
+              </v-btn>
+            </v-col>
+          </v-row>
         </v-card-actions>
       </v-card>
     </div>
