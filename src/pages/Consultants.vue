@@ -105,7 +105,7 @@
                       "
                       to="/order"
                   >
-                    Konsultasi
+                    Lihat Profil
                   </v-btn>
                 </v-col>
               </v-row>

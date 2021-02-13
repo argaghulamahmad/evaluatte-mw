@@ -5,7 +5,18 @@
           fixed
           color="#212529"
           dark
+          shrink-on-scroll
+          prominent
+          src="https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/header+2+-+new-min.png"
+          fade-img-on-scroll
       >
+        <template v-slot:img="{ props }">
+          <v-img
+              v-bind="props"
+              gradient="to top right, rgba(33,37,41,.3), rgba(33,37,41,.3)"
+          ></v-img>
+        </template>
+
         <v-app-bar-nav-icon>
           <v-icon @click="
             hasHistory()
@@ -20,7 +31,7 @@
       <div
           class="overflow-y-auto"
       >
-        <div style="margin-top: 20%;"/>
+        <div style="margin-top: 45%;"/>
 
         <div class="mx-2 elevation-2">
           <h3 class="ml-2 mt-2 pl-2 pt-2 pb-2">Atur Tanggal</h3>
