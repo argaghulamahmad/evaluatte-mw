@@ -37,6 +37,31 @@
           </v-carousel-item>
         </v-carousel>
       </div>
+      <div class="mx-4">
+        <v-row no-gutters>
+          <div style="min-width: 100%">
+            <h3 class="text-center">Layanan Kami</h3>
+          </div>
+          <v-col
+              cols="3"
+              class="d-flex justify-center mb-6"
+              style="min-width: 100%;"
+          >
+            <div
+                v-for="(service, index) in services"
+                :key="`service-${index}`"
+                class="text-center"
+            >
+              <div
+                  class="mx-4 elevation-1 rounded-circle text-center"
+              >
+                <v-img :src="service.icon"></v-img>
+              </div>
+              <h6 class="mt-4">{{service.name}}</h6>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
       <div style="margin-top: 20%;"/>
     </div>
   </v-card>
@@ -50,6 +75,20 @@ export default {
       banners: [
         'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/banner+cv.png',
         'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/banner+interview.png',
+      ],
+      services: [
+          {
+            icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+cv+1.png',
+            name: 'Konsultasi CV',
+          },
+          {
+            icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+interviw+1.png',
+            name: 'Konsultasi Interview',
+          },
+          {
+            icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+webinar+1.png',
+            name: 'Webinar',
+          },
       ]
     }
   },
