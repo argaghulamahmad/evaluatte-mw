@@ -80,7 +80,7 @@
                       class="pr-0"
                   >
                     <v-col cols="6">
-                      <p class="mb-0">Rp. 100.000</p>
+                      <p class="mb-0" style="color: #000000;">Rp. 100.000</p>
                     </v-col>
                     <v-col cols="6">
                       <v-icon style="
@@ -89,7 +89,7 @@
                       ">
                         mdi-star
                       </v-icon>
-                      <p style="display: inline-block; vertical-align: middle;" class="mb-0">4.9</p>
+                      <p style="display: inline-block; vertical-align: middle; color: #000000;" class="mb-0">4.9</p>
                     </v-col>
                   </v-btn>
                 </v-col>
