@@ -39,7 +39,7 @@
       </div>
       <div class="mx-4 mb-8">
         <v-row no-gutters>
-          <div style="min-width: 100%">
+          <div style="min-width: 100%" class="mb-8">
             <h3 class="text-center">Layanan Kami</h3>
           </div>
           <v-col
@@ -52,19 +52,21 @@
                 :key="`service-${index}`"
                 class="text-center"
             >
-              <div
-                  class="mx-4 rounded-circle text-center"
-                  style="box-shadow: rgb(202 211 225) 0 1px 4px 0;"
-              >
-                <v-img :src="service.icon"></v-img>
-              </div>
-              <h6 class="mt-4">{{ service.name }}</h6>
+              <router-link to="/consultants" active-class="active" style="text-decoration: none; color: inherit;">
+                <div
+                    class="mx-4 rounded-circle text-center"
+                    style="box-shadow: rgb(202 211 225) 0 1px 4px 0;"
+                >
+                  <v-img :src="service.icon"></v-img>
+                </div>
+                <h6 class="mt-4">{{ service.name }}</h6>
+              </router-link>
             </div>
           </v-col>
         </v-row>
       </div>
       <div class="mx-4">
-        <div style="min-width: 100%;" class="mb-4">
+        <div style="min-width: 100%" class="mb-8">
           <h3 class="text-center">Testimoni</h3>
         </div>
         <v-carousel
