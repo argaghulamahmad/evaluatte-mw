@@ -54,7 +54,7 @@
           </template>
         </v-select>
 
-        <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
+        <div v-for="(consultant, index) in consultantsPaginated" :key="'consultant'+index">
             <v-card
                 outlined
                 style="
