@@ -116,7 +116,9 @@
                       ">
                           mdi-star
                         </v-icon>
-                        <p style="display: inline-block; vertical-align: middle; color: #000000;" class="mb-0">4.9</p>
+                        <p v-if="consultant.rating === null" style="display: inline-block; vertical-align: middle; color: #000000;" class="mb-0">-</p>
+                        <p v-if="consultant.rating !== null" style="display: inline-block; vertical-align: middle; color: #000000;" class="mb-0">
+                          {{ consultant.rating }}</p>
                       </v-col>
                     </v-btn>
                   </v-col>
@@ -167,8 +169,8 @@ export default {
       }
     }
 
-    this.consultantsPaginated = await http('https://evaluatte.com/api/consultants/');
-    // this.consultantsPaginated = await http('http://192.168.1.20:8000/api/consultants/');
+    // this.consultantsPaginated = await http('https://evaluatte.com/api/consultants/');
+    this.consultantsPaginated = await http('http://192.168.1.20:8000/api/consultants/');
   },
   data() {
     return {
