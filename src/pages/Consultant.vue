@@ -207,8 +207,6 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     this.consultant = await http(`${endpoint}/api/consultants/${this.id}/`);
-
-    this.consultantType = this.type;
   },
   data() {
     return {
