@@ -21,26 +21,52 @@
 
         <v-spacer></v-spacer>
 
+        <!--
         <template v-slot:extension>
           <v-tabs align-with-title>
             <v-tab>CV</v-tab>
             <v-tab>Interview</v-tab>
           </v-tabs>
         </template>
+        -->
       </v-app-bar>
       <div
         class="overflow-y-auto"
       >
         <div style="margin-top: 100%;"/>
 
-          <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
+        <v-select
+            :items="['CV', 'Interview']"
+            label="Tipe Konsultasi"
+            v-model="consultantType"
+            class="ma-2"
+        >
+          <template v-slot:item="{ item, attrs, on }">
+            <v-list-item
+                v-bind="attrs"
+                v-on="on"
+            >
+              <v-list-item-title
+                  :id="attrs['aria-labelledby']"
+                  v-text="item"
+              ></v-list-item-title>
+            </v-list-item>
+          </template>
+        </v-select>
+
+        <div v-for="(consultant, index) in consultantsPaginated.results" :key="'consultant'+index">
             <v-card
                 outlined
                 style="
-                background: #FFFFFF;
-                box-shadow: rgb(202 211 225) 0 1px 4px 0;
-              "
+                  background: #FFFFFF;
+                  box-shadow: rgb(202 211 225) 0 1px 4px 0;
+                "
                 class="ma-2"
+                v-if="
+                  (consultantType === 'CV' && consultant.is_cv)
+                  ||
+                  (consultantType==='Interview' && consultant.is_interview)
+                "
             >
               <v-list-item three-line>
                 <v-list-item-avatar
@@ -80,7 +106,8 @@
                         class="pr-0"
                     >
                       <v-col cols="6">
-                        <p class="mb-0" style="color: #000000;">Rp. 100.000</p>
+                        <p v-if="consultantType === 'CV'" class="mb-0" style="color: #000000;">Rp. {{ consultant.cv_price }}</p>
+                        <p v-if="consultantType === 'Interview'" class="mb-0" style="color: #000000;">Rp. {{ consultant.interview_price }}</p>
                       </v-col>
                       <v-col cols="6">
                         <v-icon style="
@@ -145,7 +172,8 @@ export default {
   },
   data() {
     return {
-      consultantsPaginated: {}
+      consultantsPaginated: {},
+      consultantType: 'CV',
     }
   },
 }
