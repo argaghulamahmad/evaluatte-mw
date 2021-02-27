@@ -24,9 +24,10 @@ const router = new VueRouter({
       props: true
     },
     {
-      path: '/consultant',
+      path: '/consultant/:id',
       name: 'Consultant',
-      component: Consultant
+      component: Consultant,
+      props: true
     },
     {
       path: '/order',

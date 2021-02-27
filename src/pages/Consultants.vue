@@ -45,7 +45,7 @@
           </template>
         </v-select>
 
-        <div v-for="(consultant, index) in consultantsPaginated" :key="'consultant'+index">
+        <div v-for="(consultant, index) in consultants" :key="'consultant'+index">
             <v-card
                 outlined
                 style="
@@ -123,7 +123,7 @@
                         color: #FFFFFF;
                         border: none;
                       "
-                        to="/consultant"
+                        :to="`/consultant/${consultant.id}`"
                     >
                       Lihat Profil
                     </v-btn>
@@ -163,13 +163,13 @@ export default {
 
     const endpoint = process.env.VUE_APP_ENDPOINT
 
-    this.consultantsPaginated = await http(`${endpoint}/api/consultants/`);
+    this.consultants = await http(`${endpoint}/api/consultants/`);
 
     this.consultantType = this.type;
   },
   data() {
     return {
-      consultantsPaginated: {},
+      consultants: {},
       consultantType: '',
     }
   },

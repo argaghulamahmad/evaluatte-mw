@@ -2,13 +2,13 @@
   <div>
     <v-card class="overflow-hidden">
       <v-app-bar
-          fixed
           color="#212529"
           dark
-          shrink-on-scroll
-          prominent
-          src="https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/layanan+kami+-+interview-min.png"
           fade-img-on-scroll
+          fixed
+          prominent
+          shrink-on-scroll
+          src="https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/layanan+kami+-+interview-min.png"
       >
         <template v-slot:img="{ props }">
           <v-img
@@ -42,20 +42,20 @@
                 size="56"
             >
               <img
-                  src="https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_13.jpg"
-                  alt="Teguh"
+                  :alt="consultant.full_name"
+                  :src="consultant.profile_image"
               >
             </v-avatar>
           </v-layout>
 
           <v-layout justify-center>
             <h2>
-              Teguh Priyantono
+              {{ consultant.full_name }}
             </h2>
           </v-layout>
           <v-layout justify-center>
             <h4>
-              Talent Sourcer at IDN Media
+              {{consultant.role}} at {{ consultant.company_name }}
             </h4>
           </v-layout>
         </div>
@@ -74,7 +74,7 @@
                       <b>Perusahaan</b>
                     </v-col>
                     <v-col class="pb-2 py-0">
-                      IDN Media
+                      {{ consultant.company_name }}
                     </v-col>
                   </v-row>
                   <v-row>
@@ -82,7 +82,7 @@
                       <b>Industri</b>
                     </v-col>
                     <v-col class="pb-2 py-0">
-                      Digital Media
+                      {{ consultant.industry }}
                     </v-col>
                   </v-row>
                   <v-row>
@@ -90,7 +90,7 @@
                       <b>Total Pengalaman</b>
                     </v-col>
                     <v-col class="pb-2 py-0">
-                      1 Tahun
+                      {{ consultant.year_of_experience }} Tahun
                     </v-col>
                   </v-row>
                 </div>
@@ -102,8 +102,7 @@
               <v-expansion-panel-content>
                 <div>
                   <ul>
-                    <li>Talent Sourcer di IDN Media | 2020 - 2021</li>
-                    <li>CEO Evaluatte</li>
+                    <li :key="`exp-${index}`" v-for="(experience, index) in consultant.experience_as_list">{{ experience }}</li>
                   </ul>
                 </div>
               </v-expansion-panel-content>
@@ -114,9 +113,7 @@
               <v-expansion-panel-content>
                 <div class="pl-2">
                   <ul>
-                    <li>Melakukan screening CV kandidat</li>
-                    <li>Melakukan interview dengan calon kandidat</li>
-                    <li>Membuat jadwal interview dengan calon kandidat</li>
+                    <li :key="`desc-${index}`" v-for="(description, index) in consultant.job_description_as_list">{{ description }}</li>
                   </ul>
                 </div>
               </v-expansion-panel-content>
@@ -127,9 +124,7 @@
               <v-expansion-panel-content>
                 <div>
                   <ul>
-                    <li>Marketing Manager</li>
-                    <li>Copywriter</li>
-                    <li>Graphic Designer</li>
+                    <li :key="`role-exp-${index}`" v-for="(role_expertise, index) in consultant.role_expertise_as_list">{{ role_expertise }}</li>
                   </ul>
                 </div>
               </v-expansion-panel-content>
@@ -167,13 +162,13 @@
           <v-col cols="6">
             <v-btn
                 outlined
-                text
                 style="
                         min-width: 100%;
                         background: #FCCF14;
                         color: #FFFFFF;
                         border: none;
                       "
+                text
                 to="/order"
             >
               Pilih Jadwal
@@ -190,80 +185,36 @@
 <script>
 export default {
   name: "Consultant",
+  props: ['id'],
+  async created() {
+    async function http(url,
+                        method = 'GET',
+                        data,
+    ) {
+      // eslint-disable-next-line no-useless-catch
+      try {
+        const response = await fetch(url, {
+          method,
+          data
+        });
+
+        return await response.json();
+      } catch (error) {
+        throw error;
+      }
+    }
+
+    const endpoint = process.env.VUE_APP_ENDPOINT
+
+    this.consultant = await http(`${endpoint}/api/consultants/${this.id}/`);
+
+    this.consultantType = this.type;
+  },
   data() {
     return {
       panel: [],
 
-      consultantsPaginated: {
-        "count": 8,
-        "next": null,
-        "previous": null,
-        "results": [
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_15.jpg",
-            "full_name": "Merina Anindita",
-            "role": "Recruitment Specialist",
-            "company_name": "Kitabisa",
-            "consultant_schedules": []
-          },
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_13.jpg",
-            "full_name": "Teguh Priyantono",
-            "role": "Talent Sourcer",
-            "company_name": "IDN Media",
-            "consultant_schedules": [
-              {
-                "start_date": "2021-01-23",
-                "end_date": "2021-01-30",
-                "start_time": "18:00:00",
-                "end_time": "21:00:00"
-              }
-            ]
-          },
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_16.jpg",
-            "full_name": "Shofia A Hajaraswati",
-            "role": "Former People Acquisition",
-            "company_name": "Gojek",
-            "consultant_schedules": []
-          },
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/WhatsApp_Image_2021-02-01_at_5.38.57_PM.jpeg",
-            "full_name": "Annisa Huljannah",
-            "role": "Talent Sourcer",
-            "company_name": "IDN Media",
-            "consultant_schedules": []
-          },
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_14.jpg",
-            "full_name": "Devina Calista",
-            "role": "Recruiter",
-            "company_name": "Bank Mayapada",
-            "consultant_schedules": []
-          },
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_21.jpg",
-            "full_name": "Alifa Kusuma",
-            "role": "Recruiter",
-            "company_name": "Bank Amar",
-            "consultant_schedules": []
-          },
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_22.jpg",
-            "full_name": "Derry Pratama Reza",
-            "role": "Sr. Talent Acquisition",
-            "company_name": "Ruangguru",
-            "consultant_schedules": []
-          },
-          {
-            "profile_image": "https://evaluatte-system.s3.amazonaws.com/media/public/New_Project_23.jpg",
-            "full_name": "Dea Permata Sari",
-            "role": "Recruiter",
-            "company_name": "Kompas Gramedia",
-            "consultant_schedules": []
-          }
-        ]
-      }
+      consultant: {}
     }
   },
   methods: {
