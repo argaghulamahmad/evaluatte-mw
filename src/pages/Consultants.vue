@@ -61,10 +61,10 @@
                     <v-list-item-title class="heading-3">
                       {{ consultant.full_name }}
                     </v-list-item-title>
-                    <v-list-item-subtitle>{{ consultant.company_name }} | {years_of_experience} Tahun</v-list-item-subtitle>
+                    <v-list-item-subtitle>{{ consultant.company_name }} | {{ consultant.year_of_experience }} Tahun</v-list-item-subtitle>
                     <v-list-item-subtitle>
                       <v-icon size="12">mdi-briefcase</v-icon>
-                      {industry}
+                      {{ consultant.industry }}
                     </v-list-item-subtitle>
                   </v-list-item-content>
                 </div>
@@ -141,6 +141,7 @@ export default {
     }
 
     this.consultantsPaginated = await http('https://evaluatte.com/api/consultants/');
+    // this.consultantsPaginated = await http('http://192.168.1.20:8000/api/consultants/');
   },
   data() {
     return {
