@@ -3,6 +3,7 @@
 * - implement PWA
 *
 * - implement consultants page
+* - implement consultants pagination
 * - implement schedules page
 * - implement profile page
 *
