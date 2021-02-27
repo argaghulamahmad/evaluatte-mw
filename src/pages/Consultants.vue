@@ -144,6 +144,8 @@ export default {
   name: "Consultants",
   props: ['type'],
   async created() {
+    this.consultantType = this.type;
+
     async function http(url,
                         method = 'GET',
                         data,
@@ -164,8 +166,6 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     this.consultants = await http(`${endpoint}/api/consultants/`);
-
-    this.consultantType = this.type;
   },
   data() {
     return {
