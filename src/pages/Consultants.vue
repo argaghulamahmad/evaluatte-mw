@@ -169,8 +169,9 @@ export default {
       }
     }
 
-    // this.consultantsPaginated = await http('https://evaluatte.com/api/consultants/');
-    this.consultantsPaginated = await http('http://192.168.1.20:8000/api/consultants/');
+    const endpoint = process.env.VUE_APP_ENDPOINT
+
+    this.consultantsPaginated = await http(`${endpoint}/api/consultants/`);
   },
   data() {
     return {
