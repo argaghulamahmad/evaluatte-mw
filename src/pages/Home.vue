@@ -52,7 +52,7 @@
                 :key="`service-${index}`"
                 class="text-center"
             >
-              <router-link to="/consultants" active-class="active" style="text-decoration: none; color: inherit;">
+              <router-link :to="service.url" active-class="active" style="text-decoration: none; color: inherit;">
                 <div
                     class="mx-4 rounded-circle text-center"
                     style="box-shadow: rgb(202 211 225) 0 1px 4px 0;"
@@ -161,14 +161,17 @@ export default {
         {
           icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+cv+1.png',
           name: 'Konsultasi CV',
+          url: '/consultants/CV',
         },
         {
           icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+interviw+1.png',
           name: 'Konsultasi Interview',
+          url: '/consultants/Interview',
         },
         {
           icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+webinar+1.png',
           name: 'Webinar',
+          url: '/consultants/Webinar',
         },
       ],
       testimonials: [
