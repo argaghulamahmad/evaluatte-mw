@@ -20,15 +20,6 @@
         <v-toolbar-title>Konsultan Evaluatte</v-toolbar-title>
 
         <v-spacer></v-spacer>
-
-        <!--
-        <template v-slot:extension>
-          <v-tabs align-with-title>
-            <v-tab>CV</v-tab>
-            <v-tab>Interview</v-tab>
-          </v-tabs>
-        </template>
-        -->
       </v-app-bar>
       <div
         class="overflow-y-auto"
@@ -151,6 +142,7 @@
 <script>
 export default {
   name: "Consultants",
+  props: ['type'],
   async created() {
     async function http(url,
                         method = 'GET',
@@ -172,11 +164,13 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     this.consultantsPaginated = await http(`${endpoint}/api/consultants/`);
+
+    this.consultantType = this.type;
   },
   data() {
     return {
       consultantsPaginated: {},
-      consultantType: 'CV',
+      consultantType: '',
     }
   },
 }

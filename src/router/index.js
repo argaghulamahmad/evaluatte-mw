@@ -18,6 +18,12 @@ const router = new VueRouter({
       component: Consultants
     },
     {
+      path: '/consultants/:type',
+      name: 'TypeConsultants',
+      component: Consultants,
+      props: true
+    },
+    {
       path: '/consultant',
       name: 'Consultant',
       component: Consultant
