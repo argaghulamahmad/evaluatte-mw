@@ -135,19 +135,9 @@
               <v-expansion-panel-content>
                 <div>
                   <ul>
-                    <li>
-                      Senin:
-                      <ul>
-                        <li>19.00 - 20.00  |  21.00 - 22.00</li>
-                        <li>19.00 - 20.00  |  21.00 - 22.00</li>
-                      </ul>
-                    </li>
-                    <li>
-                      Rabu:
-                      <ul>
-                        <li>19.00 - 20.00  |  21.00 - 22.00</li>
-                        <li>19.00 - 20.00  |  21.00 - 22.00</li>
-                      </ul>
+                    <li :key="`schedule-${idx}`" v-for="(consultant_schedule, idx) in consultant_schedules">
+                      {{consultant_schedule.formatted_date}}  |
+                      {{consultant_schedule.formatted_start_time}} - {{consultant_schedule.formatted_end_time}}
                     </li>
                   </ul>
                 </div>
@@ -207,12 +197,14 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     this.consultant = await http(`${endpoint}/api/consultants/${this.id}/`);
+    this.consultant_schedules = await http(`${endpoint}/api/consultant-schedule/consultant/${this.id}/`);
   },
   data() {
     return {
       panel: [],
 
-      consultant: {}
+      consultant: {},
+      consultant_schedules: {}
     }
   },
   methods: {
