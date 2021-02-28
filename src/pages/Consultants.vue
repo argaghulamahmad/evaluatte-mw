@@ -97,8 +97,8 @@
                         class="pr-0"
                     >
                       <v-col cols="3">
-                        <p v-if="consultantType === 'CV'" class="mb-0 pr-2" style="color: #000000;">Rp. {{ consultant.cv_price }}</p>
-                        <p v-if="consultantType === 'Interview'" class="mb-0 pr-2" style="color: #000000;">Rp. {{ consultant.interview_price }}</p>
+                        <p v-if="consultantType === 'CV'" class="mb-0 pr-4" style="color: #000000;">{{ consultant.formatted_cv_price }}</p>
+                        <p v-if="consultantType === 'Interview'" class="mb-0 pr-4" style="color: #000000;">{{ consultant.formatted_interview_price }}</p>
                       </v-col>
                       <v-col cols="9">
                         <v-icon style="
