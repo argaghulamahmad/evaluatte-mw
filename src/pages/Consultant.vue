@@ -136,8 +136,7 @@
                 <div>
                   <ul>
                     <li :key="`schedule-${idx}`" v-for="(consultant_schedule, idx) in consultant_schedules">
-                      {{consultant_schedule.formatted_date}}  |
-                      {{consultant_schedule.formatted_start_time}} - {{consultant_schedule.formatted_end_time}}
+                      {{consultant_schedule.formatted_option}}
                     </li>
                   </ul>
                 </div>
