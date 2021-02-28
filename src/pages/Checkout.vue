@@ -81,7 +81,7 @@
                 <v-textarea
                     v-model="problem"
                     :rules="[() => !!problem || 'Harus diisi!']"
-                    label="Masalah yang dihadapi"
+                    label="Permasalahan yang ingin dikonsultasikan"
                     required
                 ></v-textarea>
                 <v-file-input
