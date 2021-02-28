@@ -72,12 +72,12 @@
                     label="Nama Konsultan"
                     required
                 ></v-text-field>
-                <v-text-field
-                    v-model="meetAt"
-                    disabled
-                    label="Konsultasi pada"
-                    required
-                ></v-text-field>
+                <v-select
+                    :model="selected_consultant_schedule"
+                    :items="consultant_schedules"
+                    item-text="formatted_option"
+                    label="Jadwal Konsultasi"
+                ></v-select>
                 <v-textarea
                     v-model="problem"
                     :rules="[() => !!problem || 'Harus diisi!']"
@@ -197,6 +197,28 @@
 <script>
 export default {
   name: "Checkout",
+  async created() {
+    async function http(url,
+                        method = 'GET',
+                        data,
+    ) {
+      // eslint-disable-next-line no-useless-catch
+      try {
+        const response = await fetch(url, {
+          method,
+          data
+        });
+
+        return await response.json();
+      } catch (error) {
+        throw error;
+      }
+    }
+
+    const endpoint = process.env.VUE_APP_ENDPOINT
+
+    this.consultant_schedules = await http(`${endpoint}/api/consultant-schedule/consultant/1/`);
+  },
   data: () => ({
     emailRules: [
       value => !!value || 'Harus diisi!.',
@@ -218,7 +240,10 @@ export default {
     isTocAccepted: false,
 
     errorMessages: null,
-    formHasErrors: null
+    formHasErrors: null,
+
+    consultant_schedules: {},
+    selected_consultant_schedule: {}
   }),
   methods: {
     hasHistory: () => window.history.length > 2,
@@ -243,6 +268,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+::v-deep {
+  .v-list-item__title {
+    white-space: unset!important;
+  }
 
+  .v-select__selection {
+    white-space: unset!important;
+  }
+}
 </style>

@@ -159,9 +159,9 @@
                         border: none;
                       "
                 text
-                to="/order"
+                to="/checkout"
             >
-              Pilih Jadwal
+              Isi Data
             </v-btn>
           </v-col>
         </v-row>

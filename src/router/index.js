@@ -3,7 +3,7 @@ import Checkout from "@/pages/Checkout";
 import Consultant from "@/pages/Consultant";
 import Consultants from "@/pages/Consultants";
 import Home from "@/pages/Home";
-import Order from "@/pages/Order";
+/*import Order from "@/pages/Order";*/
 
 const router = new VueRouter({
   routes: [
@@ -29,11 +29,11 @@ const router = new VueRouter({
       component: Consultant,
       props: true
     },
-    {
+    /*{
       path: '/order',
       name: 'Order',
       component: Order
-    },
+    },*/
     {
       path: '/checkout',
       name: 'Checkout',
