@@ -96,20 +96,31 @@
                         disabled
                         class="pr-0"
                     >
-                      <v-col cols="6">
-                        <p v-if="consultantType === 'CV'" class="mb-0" style="color: #000000;">Rp. {{ consultant.cv_price }}</p>
-                        <p v-if="consultantType === 'Interview'" class="mb-0" style="color: #000000;">Rp. {{ consultant.interview_price }}</p>
+                      <v-col cols="3">
+                        <p v-if="consultantType === 'CV'" class="mb-0 pr-2" style="color: #000000;">Rp. {{ consultant.cv_price }}</p>
+                        <p v-if="consultantType === 'Interview'" class="mb-0 pr-2" style="color: #000000;">Rp. {{ consultant.interview_price }}</p>
                       </v-col>
-                      <v-col cols="6">
+                      <v-col cols="9">
                         <v-icon style="
                         caret-color: rgb(252, 207, 20) !important;
                         color: rgb(252, 207, 20) !important;
+                        font-size: 10px;
                       ">
                           mdi-star
                         </v-icon>
-                        <p v-if="consultant.rating === null" style="display: inline-block; vertical-align: middle; color: #000000;" class="mb-0">-</p>
-                        <p v-if="consultant.rating !== null" style="display: inline-block; vertical-align: middle; color: #000000;" class="mb-0">
+                        <p v-if="consultant.rating === null" style="display: inline-block; vertical-align: middle; color: #000000; font-size: 10px;" class="mb-0 pr-2">-</p>
+                        <p v-if="consultant.rating !== null" style="display: inline-block; vertical-align: middle; color: #000000; font-size: 10px;" class="mb-0 pr-2">
                           {{ consultant.rating }}</p>
+                        <v-icon style="
+                        caret-color: rgb(252, 207, 20) !important;
+                        color: rgb(252, 207, 20) !important;
+                        font-size: 10px;
+                      ">
+                          mdi-account
+                        </v-icon>
+                        <p v-if="consultant.total !== null" style="display: inline-block; vertical-align: middle; color: #000000; font-size: 10px;" class="mb-0 pr-2">
+                          {{ consultant.total }}
+                        </p>
                       </v-col>
                     </v-btn>
                   </v-col>
@@ -176,5 +187,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+::v-deep {
+  .v-btn__content {
+    font-size: 10px;
+  }
+}
 </style>
