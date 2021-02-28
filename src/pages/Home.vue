@@ -71,7 +71,7 @@
         </div>
         <v-carousel
             cycle
-            height="230"
+            height="500"
             hide-delimiters
             :show-arrows="false"
         >
@@ -85,7 +85,7 @@
                 max-width="400"
             >
               <v-card-text class="headline font-weight-bold black--text subtitle-1">
-                "{{ testimonial.content }}"
+                "{{ testimonial.testimony }}"
               </v-card-text>
 
               <v-card-actions>
@@ -93,13 +93,13 @@
                   <v-list-item-avatar>
                     <v-img
                         class="elevation-6"
-                        :alt="testimonial.client_name"
-                        :src="testimonial.client_img"
+                        :alt="testimonial.client.full_name"
+                        :src="testimonial.client.profile_image"
                     ></v-img>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
-                    <v-list-item-title class="black--text">{{ testimonial.client_name }}</v-list-item-title>
+                    <v-list-item-title class="black--text">{{ testimonial.client.full_name }}</v-list-item-title>
                   </v-list-item-content>
 
                   <v-row
@@ -107,7 +107,7 @@
                       justify="end"
                       class="black--text"
                   >
-                    {{ testimonial.client_title }}
+                    {{ testimonial.client.title }}
                   </v-row>
                 </v-list-item>
               </v-card-actions>
@@ -151,6 +151,30 @@
 <script>
 export default {
   name: "Home",
+  async created() {
+    this.consultantType = this.type;
+
+    async function http(url,
+                        method = 'GET',
+                        data,
+    ) {
+      // eslint-disable-next-line no-useless-catch
+      try {
+        const response = await fetch(url, {
+          method,
+          data
+        });
+
+        return await response.json();
+      } catch (error) {
+        throw error;
+      }
+    }
+
+    const endpoint = process.env.VUE_APP_ENDPOINT
+
+    this.testimonials = await http(`${endpoint}/api/testimonials/`);
+  },
   data() {
     return {
       banners: [
@@ -174,20 +198,7 @@ export default {
           url: '/consultants/Webinar',
         },
       ],
-      testimonials: [
-        {
-          content: 'Setelah konsultasi di Evaluatte jadi paham banget. Terima kasih Evaluatte!',
-          client_img: 'https://evaluatte-system.s3.amazonaws.com/media/public/pandu.jpg',
-          client_name: 'Dinda',
-          client_title: 'Fresh Graduate',
-        },
-        {
-          content: 'Penjelasan yang dikasih sangat rinci. Beruntung konsultasi di sini.',
-          client_img: 'https://evaluatte-system.s3.amazonaws.com/media/public/pandu.jpg',
-          client_name: 'Romi',
-          client_title: 'Fresh Graduate',
-        },
-      ],
+      testimonials:[],
       social_links: [
         {
           url: "https://www.facebook.com/evaluattecom",
