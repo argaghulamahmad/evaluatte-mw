@@ -129,11 +129,14 @@
                         outlined
                         text
                         style="
-                        min-width: 100%;
-                        background: #FCCF14;
-                        color: #FFFFFF;
-                        border: none;
-                      "
+                          min-width: 100%;
+                          background: #FCCF14;
+                          color: #FFFFFF;
+                          border: none;
+                        "
+
+                        @click.native="setConsultantId(consultant.id)"
+
                         :to="`/consultant/${consultant.id}`"
                     >
                       Lihat Profil
@@ -182,6 +185,11 @@ export default {
     return {
       consultants: {},
       consultantType: '',
+    }
+  },
+  methods: {
+    setConsultantId(consultantId) {
+      this.$store.commit('setSelectedConsultant', consultantId)
     }
   },
 }
