@@ -107,21 +107,30 @@
                       <div class="mb-4">
                         <h4>Tujuan</h4>
                         <p>
-                          Memberikan pemahaman tentang CV dan teknik interview yang tepat, serta membuat peluang yang lebih besar untuk diterima di suatu pekerjaan.
+                          Memberikan pemahaman tentang CV dan teknik interview yang tepat, serta membuat peluang yang
+                          lebih besar untuk diterima di suatu pekerjaan.
                         </p>
                       </div>
                       <div class="mb-4">
                         <h4>Kewajiban</h4>
                         <div>
                           <ul>
-                            <li>User wajib mendaftar dan melakukan pembayaran sebelum melakukan konsultasi (1 hari sebelumnya)</li>
-                            <li>User harus menyiapkan segala pertanyaan, bahan diskusi, dll sebelum sesi konsultasi, agar sesi konsultasi dapat berjalan efektif</li>
+                            <li>User wajib mendaftar dan melakukan pembayaran sebelum melakukan konsultasi (1 hari
+                              sebelumnya)
+                            </li>
+                            <li>User harus menyiapkan segala pertanyaan, bahan diskusi, dll sebelum sesi konsultasi,
+                              agar sesi konsultasi dapat berjalan efektif
+                            </li>
                             <li>User wajib membaca SOP yang berlaku</li>
                             <li>User harus memilih jadwal konsultasi sesuai dengan jadwal konsultan</li>
                             <li>User wajib berkomunikasi dengan sopan</li>
                             <li>User hanya dapat menanyakan pertanyaan sesuai konteks konsultasi</li>
-                            <li>Apabila user menanyakan pertanyaan di luar konteks konsultasi, maka user akan mendapatkan penalti.</li>
-                            <li>Apabila user mendapatkan penalti sebanyak 3x, maka konsultan berhak mengakhiri sesi konsultasi meskipun waktu konsultasi belum berakhir.</li>
+                            <li>Apabila user menanyakan pertanyaan di luar konteks konsultasi, maka user akan
+                              mendapatkan penalti.
+                            </li>
+                            <li>Apabila user mendapatkan penalti sebanyak 3x, maka konsultan berhak mengakhiri sesi
+                              konsultasi meskipun waktu konsultasi belum berakhir.
+                            </li>
                             <li>User wajib mengisi dan menilai kinerja konsultan</li>
                           </ul>
                         </div>
@@ -130,10 +139,14 @@
                         <h4>Hak</h4>
                         <div>
                           <ul>
-                            <li>User berhak memilih konsultan yang diinginkan (selama konsultan tersebut masih tersedia).</li>
+                            <li>User berhak memilih konsultan yang diinginkan (selama konsultan tersebut masih
+                              tersedia).
+                            </li>
                             <li>User berhak bertanya tentang apa pun (selama masih dalam konteks konsultasi).</li>
                             <li>User berhak mendapat waktu konsultasi sesuai dengan yang telah ditentukan.</li>
-                            <li>User berhak memberi penilaian (kepada konsultan) sesuai dengan yang dirasakan selama sesi konsultasi.</li>
+                            <li>User berhak memberi penilaian (kepada konsultan) sesuai dengan yang dirasakan selama
+                              sesi konsultasi.
+                            </li>
                             <li>User berhak mendapatkan resume hasil konsultasi.</li>
                           </ul>
                         </div>
@@ -235,7 +248,6 @@ export default {
     email: null,
     phoneNumber: null,
     consultant: {},
-    meetAt: 'Rabu, 21.00 - 22.00',
     problem: null,
     resumeUrl: null,
     isTocAccepted: false,
@@ -272,11 +284,11 @@ export default {
 <style lang="scss" scoped>
 ::v-deep {
   .v-list-item__title {
-    white-space: unset!important;
+    white-space: unset !important;
   }
 
   .v-select__selection {
-    white-space: unset!important;
+    white-space: unset !important;
   }
 }
 </style>
