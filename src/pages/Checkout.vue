@@ -76,6 +76,11 @@
                     disabled
                     label="Tipe Konsultasi"
                 ></v-text-field>
+                <v-text-field
+                    v-model="formattedConsultantPrice"
+                    disabled
+                    label="Harga Konsultasi"
+                ></v-text-field>
                 <v-select
                     :model="selectedConsultantSchedule"
                     :items="consultantSchedules"
@@ -197,7 +202,11 @@ export default {
   name: "Checkout",
   async created() {
     if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
-      await this.$router.push(`/consultants/cv`)
+      await this.$router.push(`/consultants/CV`)
+    }
+
+    if (this.$store.state.selectedConsultantType === '') {
+      await this.$router.push(`/consultants/CV`)
     }
 
     if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
@@ -207,6 +216,12 @@ export default {
 
     if (this.$store.state.selectedConsultantType !== '') {
       this.consultantType = this.$store.state.selectedConsultantType;
+    }
+
+    if (this.consultantType === 'CV') {
+      this.formattedConsultantPrice = this.consultant.formatted_cv_price
+    } else if (this.consultantType === 'Interview') {
+      this.formattedConsultantPrice = this.consultant.formatted_interview_price
     }
   },
   data: () => ({
@@ -229,6 +244,7 @@ export default {
     isTocAccepted: false,
 
     consultantType: '',
+    formattedConsultantPrice: '',
 
     consultant: {},
     consultantSchedules: [],
