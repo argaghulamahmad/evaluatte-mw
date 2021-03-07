@@ -178,6 +178,7 @@ export default {
   props: ['type'],
   async created() {
     this.consultantType = this.type;
+    this.setConsultantTypeToVuex(this.consultantType);
 
     async function http(url,
                         method = 'GET',

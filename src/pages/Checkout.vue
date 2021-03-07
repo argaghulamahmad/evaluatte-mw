@@ -201,6 +201,9 @@
 export default {
   name: "Checkout",
   async created() {
+    console.log(Object.keys(this.$store.state.selectedConsultant).length === 0)
+    console.log(this.$store.state.selectedConsultantType)
+
     if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
       await this.$router.push(`/consultants/CV`)
     }
