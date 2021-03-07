@@ -82,9 +82,10 @@
                     label="Harga Konsultasi"
                 ></v-text-field>
                 <v-select
-                    :model="selectedConsultantSchedule"
+                    v-model="selectedConsultantSchedule"
                     :items="consultantSchedules"
                     item-text="formatted_option"
+                    item-value="id"
                     label="Jadwal Konsultasi"
                 ></v-select>
                 <v-textarea
@@ -201,9 +202,6 @@
 export default {
   name: "Checkout",
   async created() {
-    console.log(Object.keys(this.$store.state.selectedConsultant).length === 0)
-    console.log(this.$store.state.selectedConsultantType)
-
     if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
       await this.$router.push(`/consultants/CV`)
     }
@@ -263,6 +261,7 @@ export default {
         consultantId: this.consultant.id,
         clientProblem: this.clientProblem,
         clientResumeUrl: this.clientResumeUrl,
+        selectedConsultantScheduleId: this.selectedConsultantSchedule,
       }
 
       console.log(postData)
