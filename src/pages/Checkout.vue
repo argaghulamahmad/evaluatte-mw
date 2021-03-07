@@ -255,12 +255,12 @@ export default {
     hasHistory: () => window.history.length > 2,
     submit() {
       const postData = {
-        clientName: this.clientName,
         clientEmail: this.clientEmail,
+        clientName: this.clientName,
         clientPhoneNumber: this.clientPhoneNumber,
-        consultantId: this.consultant.id,
         clientProblem: this.clientProblem,
         clientResumeUrl: this.clientResumeUrl,
+        consultantId: this.consultant.id,
         selectedConsultantScheduleId: this.selectedConsultantSchedule,
       }
 
