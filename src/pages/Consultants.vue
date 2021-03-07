@@ -56,9 +56,11 @@
                 "
                 class="ma-2"
                 v-if="
-                  (consultantType === 'CV' && consultant.is_cv)
+                  consultant.consultant_schedules.length !== 0
+                  &&
+                  ((consultantType === 'CV' && consultant.is_cv)
                   ||
-                  (consultantType==='Interview' && consultant.is_interview)
+                  (consultantType==='Interview' && consultant.is_interview))
                 "
             >
               <v-list-item three-line>
