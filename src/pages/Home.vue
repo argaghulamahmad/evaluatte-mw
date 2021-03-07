@@ -173,7 +173,14 @@ export default {
 
     const endpoint = process.env.VUE_APP_ENDPOINT
 
-    this.testimonials = await http(`${endpoint}/api/testimonials/`);
+    if (this.$store.state.testimonials.length === 0) {
+      this.testimonials = await http(`${endpoint}/api/testimonials/`);
+      this.setTestimonialsToVuex(this.testimonials);
+    }
+
+    if (this.$store.state.testimonials.length !== 0) {
+      this.testimonials = this.$store.state.testimonials;
+    }
   },
   data() {
     return {
@@ -198,30 +205,35 @@ export default {
           url: '/consultants/Webinar',
         },
       ],
-      testimonials:[],
+      testimonials: [],
       social_links: [
         {
           url: "https://www.facebook.com/evaluattecom",
           icon: "fab fa-facebook",
         },
-          {
+        {
           url: "https://www.instagram.com/evaluatte_com/",
           icon: "fab fa-instagram",
         },
-          {
+        {
           url: "https://www.youtube.com/channel/UCfmb7kcDMjW9lJpfADl132Q",
           icon: "fab fa-youtube",
         },
-          {
+        {
           url: "https://www.linkedin.com/company/evaluatte",
           icon: "fab fa-linkedin-in",
         },
-          {
+        {
           url: "https://www.tiktok.com/@evaluatte_com?lang=en",
           icon: "fab fa-tiktok",
         }
       ]
     }
+  },
+  methods: {
+    setTestimonialsToVuex(testimonials) {
+      this.$store.commit('setTestimonials', testimonials)
+    },
   },
   computed: {
     year() {
