@@ -82,7 +82,7 @@
                     label="Harga Konsultasi"
                 ></v-text-field>
                 <v-select
-                    v-model="selectedConsultantSchedule"
+                    v-model="consultantScheduleId"
                     :items="consultantSchedules"
                     item-text="formatted_option"
                     item-value="id"
@@ -249,7 +249,7 @@ export default {
 
     consultant: {},
     consultantSchedules: [],
-    selectedConsultantSchedule: {}
+    consultantScheduleId: {}
   }),
   methods: {
     hasHistory: () => window.history.length > 2,
@@ -261,7 +261,7 @@ export default {
         clientProblem: this.clientProblem,
         clientResumeUrl: this.clientResumeUrl,
         consultantId: this.consultant.id,
-        selectedConsultantScheduleId: this.selectedConsultantSchedule,
+        consultantScheduleId: this.consultantScheduleId,
       }
 
       console.log(postData)
