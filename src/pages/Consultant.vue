@@ -23,7 +23,8 @@
             ? $router.go(-1)
             : $router.push('/')
           "
-          >mdi-chevron-left</v-icon>
+          >mdi-chevron-left
+          </v-icon>
         </v-app-bar-nav-icon>
 
         <v-toolbar-title>Profil Konsultan</v-toolbar-title>
@@ -55,7 +56,7 @@
           </v-layout>
           <v-layout justify-center>
             <h4>
-              {{consultant.role}} at {{ consultant.company_name }}
+              {{ consultant.role }} at {{ consultant.company_name }}
             </h4>
           </v-layout>
         </div>
@@ -102,7 +103,10 @@
               <v-expansion-panel-content>
                 <div>
                   <ul>
-                    <li :key="`exp-${index}`" v-for="(experience, index) in consultant.experience_as_list">{{ experience }}</li>
+                    <li :key="`exp-${index}`" v-for="(experience, index) in consultant.experience_as_list">{{
+                        experience
+                      }}
+                    </li>
                   </ul>
                 </div>
               </v-expansion-panel-content>
@@ -113,7 +117,9 @@
               <v-expansion-panel-content>
                 <div class="pl-2">
                   <ul>
-                    <li :key="`desc-${index}`" v-for="(description, index) in consultant.job_description_as_list">{{ description }}</li>
+                    <li :key="`desc-${index}`" v-for="(description, index) in consultant.job_description_as_list">
+                      {{ description }}
+                    </li>
                   </ul>
                 </div>
               </v-expansion-panel-content>
@@ -124,7 +130,9 @@
               <v-expansion-panel-content>
                 <div>
                   <ul>
-                    <li :key="`role-exp-${index}`" v-for="(role_expertise, index) in consultant.role_expertise_as_list">{{ role_expertise }}</li>
+                    <li :key="`role-exp-${index}`" v-for="(role_expertise, index) in consultant.role_expertise_as_list">
+                      {{ role_expertise }}
+                    </li>
                   </ul>
                 </div>
               </v-expansion-panel-content>
@@ -136,7 +144,7 @@
                 <div>
                   <ul>
                     <li :key="`schedule-${idx}`" v-for="(consultant_schedule, idx) in consultant_schedules">
-                      {{consultant_schedule.formatted_option}}
+                      {{ consultant_schedule.formatted_option }}
                     </li>
                   </ul>
                 </div>
@@ -176,27 +184,8 @@ export default {
   name: "Consultant",
   props: ['id'],
   async created() {
-    async function http(url,
-                        method = 'GET',
-                        data,
-    ) {
-      // eslint-disable-next-line no-useless-catch
-      try {
-        const response = await fetch(url, {
-          method,
-          data
-        });
-
-        return await response.json();
-      } catch (error) {
-        throw error;
-      }
-    }
-
-    const endpoint = process.env.VUE_APP_ENDPOINT
-
-    this.consultant = await http(`${endpoint}/api/consultants/${this.id}/`);
-    this.consultant_schedules = await http(`${endpoint}/api/consultant-schedule/consultant/${this.id}/`);
+    this.consultant = this.$store.state.selectedConsultant;
+    this.consultant_schedules = this.consultant.consultant_schedules;
   },
   data() {
     return {
