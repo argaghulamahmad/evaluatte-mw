@@ -29,11 +29,6 @@ const router = new VueRouter({
       component: Consultant,
       props: true
     },
-    /*{
-      path: '/order',
-      name: 'Order',
-      component: Order
-    },*/
     {
       path: '/checkout',
       name: 'Checkout',
