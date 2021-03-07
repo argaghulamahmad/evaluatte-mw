@@ -137,7 +137,7 @@
                           border: none;
                         "
 
-                        @click.native="setConsultantToVuex(consultant.id)"
+                        @click.native="setConsultantToVuex(consultant)"
 
                         :to="`/consultant/${consultant.id}`"
                     >
