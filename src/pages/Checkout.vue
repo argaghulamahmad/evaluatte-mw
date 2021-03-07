@@ -211,27 +211,8 @@
 export default {
   name: "Checkout",
   async created() {
-    async function http(url,
-                        method = 'GET',
-                        data,
-    ) {
-      // eslint-disable-next-line no-useless-catch
-      try {
-        const response = await fetch(url, {
-          method,
-          data
-        });
-
-        return await response.json();
-      } catch (error) {
-        throw error;
-      }
-    }
-
-    const endpoint = process.env.VUE_APP_ENDPOINT
-
-    this.consultant_schedules = await http(`${endpoint}/api/consultant-schedule/consultant/1/`);
     this.consultant = this.$store.state.selectedConsultant;
+    this.consultant_schedules = this.consultant.consultant_schedules;
   },
   data: () => ({
     emailRules: [
