@@ -168,7 +168,8 @@
                       "
                 text
                 :disabled="this.consultant_schedules.length === 0"
-                to="/checkout"
+
+                @click.native="checkout()"
             >
               Isi Data
             </v-btn>
@@ -204,6 +205,10 @@ export default {
     }
   },
   methods: {
+    async checkout() {
+      await this.$router.push({path: '/checkout'})
+    },
+
     hasHistory: () => window.history.length > 2
   },
 }
