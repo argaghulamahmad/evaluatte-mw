@@ -37,13 +37,15 @@ export default {
       const awsS3CustomDomain = process.env.VUE_APP_AWS_S3_CUSTOM_DOMAIN;
       const awsS3BaseUrl = "https://" + awsS3CustomDomain;
       const awsStorageBucketName = process.env.VUE_APP_AWS_STORAGE_BUCKET_NAME;
+      const awsRegion = process.env.VUE_APP_AWS_REGION;
 
       return {
+        accessKeyId: awsAccessKeyId,
         bucketName: awsStorageBucketName,
         dirName: this.directory,
-        accessKeyId: awsAccessKeyId,
-        secretAccessKey: awsSecretAccessKey,
+        region: awsRegion,
         s3Url: awsS3BaseUrl,
+        secretAccessKey: awsSecretAccessKey,
       }
     },
     newFileName() {
