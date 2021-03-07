@@ -137,9 +137,7 @@
                           border: none;
                         "
 
-                        @click.native="setConsultantToVuex(consultant)"
-
-                        :to="`/consultant/${consultant.id}`"
+                        @click.native="seeProfile(consultant)"
                     >
                       Lihat Profil
                     </v-btn>
@@ -197,6 +195,11 @@ export default {
     }
   },
   methods: {
+    async seeProfile(consultant) {
+      await this.setConsultantToVuex(consultant);
+      await this.$router.push(`/consultant/${consultant.id}`)
+    },
+
     setConsultantsToVuex(consultants) {
       this.$store.commit('setConsultants', consultants)
     },

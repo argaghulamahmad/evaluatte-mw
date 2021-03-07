@@ -29,10 +29,10 @@ const store = new Vuex.Store({
       Vue.set(state, 'consultants', [...consultants]);
     },
     setSelectedConsultant(state, selectedConsultant) {
-      state.selectedConsultant = selectedConsultant
+      Vue.set(state, 'selectedConsultant', selectedConsultant)
     },
     setSelectedConsultantType(state, selectedConsultantType) {
-      state.selectedConsultantType = selectedConsultantType
+      Vue.set(state, 'selectedConsultantType', selectedConsultantType)
     }
   }
 })
