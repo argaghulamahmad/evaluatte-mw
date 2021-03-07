@@ -31,6 +31,8 @@
             label="Tipe Konsultasi"
             v-model="consultantType"
             class="ma-2"
+
+            @change="setConsultantTypeToVuex(consultantType)"
         >
           <template v-slot:item="{ item, attrs, on }">
             <v-list-item
@@ -135,7 +137,7 @@
                           border: none;
                         "
 
-                        @click.native="setConsultantId(consultant.id)"
+                        @click.native="setConsultantToVuex(consultant.id)"
 
                         :to="`/consultant/${consultant.id}`"
                     >
@@ -188,8 +190,11 @@ export default {
     }
   },
   methods: {
-    setConsultantId(consultantId) {
-      this.$store.commit('setSelectedConsultant', consultantId)
+    setConsultantToVuex(consultant) {
+      this.$store.commit('setSelectedConsultant', consultant)
+    },
+    setConsultantTypeToVuex(category) {
+      this.$store.commit('setSelectedConsultantType', category)
     }
   },
 }

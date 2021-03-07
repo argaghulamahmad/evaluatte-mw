@@ -14,11 +14,15 @@ Vue.config.productionTip = false
 
 const store = new Vuex.Store({
   state: {
-    selectedConsultant: 0
+    selectedConsultant: {},
+    selectedConsultantType: '',
   },
   mutations: {
     setSelectedConsultant(state, selectedConsultant) {
       state.selectedConsultant = selectedConsultant
+    },
+    setSelectedConsultantType(state, selectedConsultantType) {
+      state.selectedConsultantType = selectedConsultantType
     }
   }
 })

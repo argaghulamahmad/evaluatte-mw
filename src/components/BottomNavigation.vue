@@ -15,7 +15,7 @@
       align-items: flex-start;
     ">
     <v-bottom-navigation v-model="value">
-      <v-btn value="consultants" to="/consultants">
+      <v-btn value="consultants" to="/consultants/CV">
         <span>Konsultan</span>
 
         <v-icon>mdi-account-group-outline</v-icon>
