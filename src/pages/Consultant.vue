@@ -187,7 +187,7 @@ export default {
   props: ['id'],
   async created() {
     if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
-      await this.$router.push(`/consultants`)
+      await this.$router.push(`/consultants/cv`)
     }
 
     if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
