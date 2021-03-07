@@ -56,8 +56,6 @@
                 "
                 class="ma-2"
                 v-if="
-                  consultant.consultant_schedules.length !== 0
-                  &&
                   ((consultantType === 'CV' && consultant.is_cv)
                   ||
                   (consultantType==='Interview' && consultant.is_interview))
@@ -138,6 +136,25 @@
                           color: #FFFFFF;
                           border: none;
                         "
+                        v-if="consultant.consultant_schedules.length === 0"
+
+                        :disabled="consultant.consultant_schedules.length === 0"
+
+                        @click.native="seeProfile(consultant)"
+                    >
+                      Jadwal Tidak Ada
+                    </v-btn>
+                    <v-btn
+                        outlined
+                        text
+                        style="
+                          min-width: 100%;
+                          background: #FCCF14;
+                          color: #FFFFFF;
+                          border: none;
+                        "
+
+                        v-if="consultant.consultant_schedules.length !== 0"
 
                         @click.native="seeProfile(consultant)"
                     >
