@@ -71,9 +71,14 @@
                     label="Nama Konsultan"
                     required
                 ></v-text-field>
+                <v-text-field
+                    v-model="consultantType"
+                    disabled
+                    label="Tipe Konsultasi"
+                ></v-text-field>
                 <v-select
-                    :model="selected_consultant_schedule"
-                    :items="consultant_schedules"
+                    :model="selectedConsultantSchedule"
+                    :items="consultantSchedules"
                     item-text="formatted_option"
                     label="Jadwal Konsultasi"
                 ></v-select>
@@ -197,7 +202,11 @@ export default {
 
     if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
       this.consultant = this.$store.state.selectedConsultant;
-      this.consultant_schedules = this.consultant.consultant_schedules;
+      this.consultantSchedules = this.consultant.consultant_schedules;
+    }
+
+    if (this.$store.state.selectedConsultantType !== '') {
+      this.consultantType = this.$store.state.selectedConsultantType;
     }
   },
   data: () => ({
@@ -219,9 +228,11 @@ export default {
 
     isTocAccepted: false,
 
+    consultantType: '',
+
     consultant: {},
-    consultant_schedules: [],
-    selected_consultant_schedule: {}
+    consultantSchedules: [],
+    selectedConsultantSchedule: {}
   }),
   methods: {
     hasHistory: () => window.history.length > 2,
