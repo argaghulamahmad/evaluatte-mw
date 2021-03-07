@@ -45,23 +45,22 @@
               <v-card-text>
                 <v-text-field
                     ref="name"
-                    v-model="name"
-                    :rules="[() => !!name || 'Harus diisi!']"
-                    :error-messages="errorMessages"
+                    v-model="clientName"
+                    :rules="[() => !!clientName || 'Harus diisi!']"
                     label="Nama Lengkap"
                     placeholder="Khoirunnisa Mazaya"
                     required
                 ></v-text-field>
                 <v-text-field
-                    v-model="email"
+                    v-model="clientEmail"
                     :rules="emailRules"
                     label="E-mail"
                     placeholder="khoirunnisa@gmail.com"
                     required
                 ></v-text-field>
                 <v-text-field
-                    v-model="phoneNumber"
-                    :rules="[() => !!phoneNumber || 'Harus diisi!']"
+                    v-model="clientPhoneNumber"
+                    :rules="[() => !!clientPhoneNumber || 'Harus diisi!']"
                     label="No. Telp."
                     placeholder="087788888888"
                     required
@@ -79,8 +78,8 @@
                     label="Jadwal Konsultasi"
                 ></v-select>
                 <v-textarea
-                    v-model="problem"
-                    :rules="[() => !!problem || 'Harus diisi!']"
+                    v-model="clientProblem"
+                    :rules="[() => !!clientProblem || 'Harus diisi!']"
                     label="Permasalahan yang ingin dikonsultasikan"
                     required
                 ></v-textarea>
@@ -164,25 +163,6 @@
               <v-divider class="mt-12"></v-divider>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-slide-x-reverse-transition>
-                  <v-tooltip
-                      v-if="formHasErrors"
-                      left
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-btn
-                          icon
-                          class="my-0"
-                          v-bind="attrs"
-                          @click="resetForm"
-                          v-on="on"
-                      >
-                        <v-icon>mdi-refresh</v-icon>
-                      </v-btn>
-                    </template>
-                    <span>Refresh form</span>
-                  </v-tooltip>
-                </v-slide-x-reverse-transition>
                 <v-btn
                     outlined
                     text
@@ -191,7 +171,6 @@
                         color: #FFFFFF;
                         border: none;
                       "
-                    to="/pay"
                     :disabled="!isTocAccepted"
                     @click="submit"
                 >
@@ -212,8 +191,14 @@
 export default {
   name: "Checkout",
   async created() {
-    this.consultant = this.$store.state.selectedConsultant;
-    this.consultant_schedules = this.consultant.consultant_schedules;
+    if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
+      await this.$router.push(`/consultants`)
+    }
+
+    if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
+      this.consultant = this.$store.state.selectedConsultant;
+      this.consultant_schedules = this.consultant.consultant_schedules;
+    }
   },
   data: () => ({
     emailRules: [
@@ -226,38 +211,31 @@ export default {
 
     panel: [],
 
-    name: null,
-    email: null,
-    phoneNumber: null,
-    consultant: {},
-    problem: null,
-    resumeUrl: null,
+    clientName: null,
+    clientEmail: null,
+    clientPhoneNumber: null,
+    clientProblem: null,
+    clientResumeUrl: null,
+
     isTocAccepted: false,
 
-    errorMessages: null,
-    formHasErrors: null,
-
-    consultant_schedules: {},
+    consultant: {},
+    consultant_schedules: [],
     selected_consultant_schedule: {}
   }),
   methods: {
     hasHistory: () => window.history.length > 2,
-    resetForm() {
-      this.errorMessages = []
-      this.formHasErrors = false
-
-      Object.keys(this.form).forEach(f => {
-        this.$refs[f].reset()
-      })
-    },
     submit() {
-      this.formHasErrors = false
+      const postData = {
+        clientName: this.clientName,
+        clientEmail: this.clientEmail,
+        clientPhoneNumber: this.clientPhoneNumber,
+        consultantId: this.consultant.id,
+        clientProblem: this.clientProblem,
+        clientResumeUrl: this.clientResumeUrl,
+      }
 
-      Object.keys(this.form).forEach(f => {
-        if (!this.form[f]) this.formHasErrors = true
-
-        this.$refs[f].validate(true)
-      })
+      console.log(postData)
     },
   },
 }

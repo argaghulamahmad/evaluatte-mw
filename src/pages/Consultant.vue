@@ -142,7 +142,8 @@
               <v-expansion-panel-header>Jadwal Konsultasi</v-expansion-panel-header>
               <v-expansion-panel-content>
                 <div>
-                  <ul>
+                  <p class="ml-2" v-if="consultant_schedules.length ===0">Tidak ada jadwal yang tersedia!</p>
+                  <ul v-if="consultant_schedules.length !==0">
                     <li :key="`schedule-${idx}`" v-for="(consultant_schedule, idx) in consultant_schedules">
                       {{ consultant_schedule.formatted_option }}
                     </li>
@@ -166,6 +167,7 @@
                         border: none;
                       "
                 text
+                :disabled="this.consultant_schedules.length === 0"
                 to="/checkout"
             >
               Isi Data
@@ -184,8 +186,14 @@ export default {
   name: "Consultant",
   props: ['id'],
   async created() {
-    this.consultant = this.$store.state.selectedConsultant;
-    this.consultant_schedules = this.consultant.consultant_schedules;
+    if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
+      await this.$router.push(`/consultants`)
+    }
+
+    if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
+      this.consultant = this.$store.state.selectedConsultant;
+      this.consultant_schedules = this.consultant.consultant_schedules;
+    }
   },
   data() {
     return {
