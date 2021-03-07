@@ -149,32 +149,17 @@
 </template>
 
 <script>
+import fetchJson from "@/utils/fetch";
+
 export default {
   name: "Home",
   async created() {
     this.consultantType = this.type;
 
-    async function http(url,
-                        method = 'GET',
-                        data,
-    ) {
-      // eslint-disable-next-line no-useless-catch
-      try {
-        const response = await fetch(url, {
-          method,
-          data
-        });
-
-        return await response.json();
-      } catch (error) {
-        throw error;
-      }
-    }
-
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     if (this.$store.state.testimonials.length === 0) {
-      this.testimonials = await http(`${endpoint}/api/testimonials/`);
+      this.testimonials = await fetchJson(`${endpoint}/api/testimonials/`);
       this.setTestimonialsToVuex(this.testimonials);
     }
 
