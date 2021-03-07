@@ -179,9 +179,16 @@ export default {
       }
     }
 
-    const endpoint = process.env.VUE_APP_ENDPOINT
+    const endpoint = process.env.VUE_APP_ENDPOINT;
 
-    this.consultants = await http(`${endpoint}/api/consultants/`);
+    if (this.$store.state.consultants.length === 0) {
+      this.consultants = await http(`${endpoint}/api/consultants/`);
+      this.setConsultantsToVuex(this.consultants);
+    }
+
+    if (this.$store.state.consultants.length !== 0) {
+      this.consultants = this.$store.state.consultants;
+    }
   },
   data() {
     return {
@@ -190,6 +197,9 @@ export default {
     }
   },
   methods: {
+    setConsultantsToVuex(consultants) {
+      this.$store.commit('setConsultants', consultants)
+    },
     setConsultantToVuex(consultant) {
       this.$store.commit('setSelectedConsultant', consultant)
     },
