@@ -192,6 +192,7 @@
                         border: none;
                       "
                     to="/pay"
+                    :disabled="!isTocAccepted"
                     @click="submit"
                 >
                   Bayar
