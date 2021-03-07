@@ -67,7 +67,7 @@
                     required
                 ></v-text-field>
                 <v-text-field
-                    v-model="consultantName"
+                    v-model="consultant.full_name"
                     disabled
                     label="Nama Konsultan"
                     required
@@ -218,6 +218,7 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     this.consultant_schedules = await http(`${endpoint}/api/consultant-schedule/consultant/1/`);
+    this.consultant = this.$store.state.selectedConsultant;
   },
   data: () => ({
     emailRules: [
@@ -233,7 +234,7 @@ export default {
     name: null,
     email: null,
     phoneNumber: null,
-    consultantName: 'Teguh Priyantono',
+    consultant: {},
     meetAt: 'Rabu, 21.00 - 22.00',
     problem: null,
     resumeUrl: null,
