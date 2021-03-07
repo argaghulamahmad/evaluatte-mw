@@ -94,16 +94,10 @@
                     label="Permasalahan yang ingin dikonsultasikan"
                     required
                 ></v-textarea>
-                <v-file-input
-                    accept="image/*"
-                    counter
-                    dense
-                    label="Lampirkan CV"
-                    outlined
-                    required
-                    show-size
-                    truncate-length="15"
-                ></v-file-input>
+                <S3FileUpload :obj="clientResume"
+                              fieldName="cv_url"
+                              directory="CV"
+                              label="Berkas CV Anda" />
               </v-card-text>
               <v-divider class="mt-12"></v-divider>
               <v-expansion-panels
@@ -199,8 +193,11 @@
 </template>
 
 <script>
+import S3FileUpload from "@/components/S3FileUpload";
+
 export default {
   name: "Checkout",
+  components: {S3FileUpload},
   async created() {
     if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
       await this.$router.push(`/consultants/CV`)
@@ -240,6 +237,7 @@ export default {
     clientEmail: null,
     clientPhoneNumber: null,
     clientProblem: null,
+    clientResume: {},
     clientResumeUrl: null,
 
     isTocAccepted: false,
@@ -254,6 +252,8 @@ export default {
   methods: {
     hasHistory: () => window.history.length > 2,
     submit() {
+      this.clientResumeUrl = this.clientResume['cv_url']
+
       const postData = {
         clientEmail: this.clientEmail,
         clientName: this.clientName,
