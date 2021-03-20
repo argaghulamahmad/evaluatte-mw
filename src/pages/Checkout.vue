@@ -255,7 +255,7 @@ export default {
   }),
   methods: {
     hasHistory: () => window.history.length > 2,
-    submit() {
+    async submit() {
       this.clientResumeUrl = this.clientResume['cv_url']
 
       const postData = {
@@ -272,11 +272,12 @@ export default {
       }
 
       let stringifyPostData = JSON.stringify(postData);
-      const endpoint = process.env.VUE_APP_ENDPOINT
+      const endpoint = process.env.VUE_APP_ENDPOINTs
 
-      let orderResponse = postJson(`${endpoint}/api/order`, stringifyPostData)
-
-      console.log(orderResponse)
+      let orderResponse = await postJson(`${endpoint}/api/order`, stringifyPostData)
+      if (orderResponse.success) {
+        window.location.href = orderResponse.data.transaction_redirect_url;
+      }
     },
   },
 }
