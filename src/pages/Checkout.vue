@@ -218,8 +218,10 @@ export default {
 
     if (this.consultantType === 'CV') {
       this.formattedConsultantPrice = this.consultant.formatted_cv_price
+      this.consultantPrice = this.consultant.cv_price
     } else if (this.consultantType === 'Interview') {
       this.formattedConsultantPrice = this.consultant.formatted_interview_price
+      this.consultantPrice = this.consultant.interview_price
     }
   },
   data: () => ({
@@ -243,6 +245,7 @@ export default {
     isTocAccepted: false,
 
     consultantType: '',
+    consultantPrice: 0,
     formattedConsultantPrice: '',
 
     consultant: {},
@@ -261,7 +264,10 @@ export default {
         clientProblem: this.clientProblem,
         clientResumeUrl: this.clientResumeUrl,
         consultantId: this.consultant.id,
+        consultantName: this.consultant.full_name,
+        consultantPrice: this.consultantPrice,
         consultantScheduleId: this.consultantScheduleId,
+        consultantType: this.consultantType,
       }
 
       console.log(postData)
