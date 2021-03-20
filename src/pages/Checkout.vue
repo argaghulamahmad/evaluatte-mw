@@ -83,7 +83,7 @@
                 ></v-text-field>
                 <v-select
                     v-model="consultantScheduleId"
-                    :items="consultantSchedules"
+                    :items="notYetBookedConsultantSchedules"
                     item-text="formatted_option"
                     item-value="id"
                     label="Jadwal Konsultasi"
@@ -279,6 +279,13 @@ export default {
         window.location.href = orderResponse.data.transaction_redirect_url;
       }
     },
+  },
+  computed: {
+    notYetBookedConsultantSchedules() {
+      return this.consultantSchedules.filter((schedule) => {
+        return schedule.is_booked === false;
+      });
+    }
   },
 }
 </script>
