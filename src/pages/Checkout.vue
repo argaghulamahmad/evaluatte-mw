@@ -272,7 +272,7 @@ export default {
       }
 
       let stringifyPostData = JSON.stringify(postData);
-      const endpoint = process.env.VUE_APP_ENDPOINTs
+      const endpoint = process.env.VUE_APP_ENDPOINT
 
       let orderResponse = await postJson(`${endpoint}/api/order`, stringifyPostData)
       if (orderResponse.success) {
