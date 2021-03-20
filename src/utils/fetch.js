@@ -20,7 +20,6 @@ const postJson = async (url, data) => {
         'Content-Type': 'application/json'
       },
       method: 'POST',
-      mode: 'cors',
     });
 
     return await response.json();
