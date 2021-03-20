@@ -194,6 +194,7 @@
 
 <script>
 import S3FileUpload from "@/components/S3FileUpload";
+import {postJson} from "@/utils/fetch";
 
 export default {
   name: "Checkout",
@@ -270,7 +271,12 @@ export default {
         consultantType: this.consultantType,
       }
 
-      console.log(postData)
+      let stringifyPostData = JSON.stringify(postData);
+      const endpoint = process.env.VUE_APP_ENDPOINT
+
+      let orderResponse = postJson(`${endpoint}/api/order`, stringifyPostData)
+
+      console.log(orderResponse)
     },
   },
 }

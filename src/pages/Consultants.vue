@@ -182,7 +182,7 @@
 </template>
 
 <script>
-import fetchJson from "@/utils/fetch";
+import {fetchJson} from "@/utils/fetch";
 
 export default {
   name: "Consultants",
