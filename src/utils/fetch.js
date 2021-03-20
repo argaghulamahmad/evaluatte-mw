@@ -2,6 +2,9 @@ const fetchJson = async url => {
   // eslint-disable-next-line no-useless-catch
   try {
     const response = await fetch(url, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
       method: 'GET',
     });
 
