@@ -208,19 +208,19 @@ export default {
       await this.$router.push(`/consultants/CV`)
     }
 
-    if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
-      this.consultant = this.$store.state.selectedConsultant;
-      this.consultantSchedules = this.consultant.consultant_schedules;
-    }
-
     if (this.$store.state.selectedConsultantType !== '') {
       this.consultantType = this.$store.state.selectedConsultantType;
+    }
+
+    if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
+      this.consultant = this.$store.state.selectedConsultant;
+      this.consultantSchedules = this.consultant.consultant_schedules.filter(schedule => schedule.type === this.consultantType);
     }
 
     if (this.consultantType === 'CV') {
       this.formattedConsultantPrice = this.consultant.formatted_cv_price
       this.consultantPrice = this.consultant.cv_price
-    } else if (this.consultantType === 'Interview') {
+    } else if (this.consultantType === 'INTERVIEW') {
       this.formattedConsultantPrice = this.consultant.formatted_interview_price
       this.consultantPrice = this.consultant.interview_price
     }

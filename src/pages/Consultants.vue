@@ -27,7 +27,7 @@
         <div style="margin-top: 100%;"/>
 
         <v-select
-            :items="['CV', 'Interview']"
+            :items="['CV', 'INTERVIEW']"
             label="Tipe Konsultasi"
             v-model="consultantType"
             class="ma-2"
@@ -58,7 +58,7 @@
               v-if="
                   ((consultantType === 'CV' && consultant.is_cv)
                   ||
-                  (consultantType==='Interview' && consultant.is_interview))
+                  (consultantType==='INTERVIEW' && consultant.is_interview))
                 "
           >
             <v-list-item three-line>
@@ -102,7 +102,7 @@
                     <v-col cols="3">
                       <p v-if="consultantType === 'CV'" class="mb-0 pr-4" style="color: #000000;">
                         {{ consultant.formatted_cv_price }}</p>
-                      <p v-if="consultantType === 'Interview'" class="mb-0 pr-4" style="color: #000000;">
+                      <p v-if="consultantType === 'INTERVIEW'" class="mb-0 pr-4" style="color: #000000;">
                         {{ consultant.formatted_interview_price }}</p>
                     </v-col>
                     <v-col cols="9">
@@ -145,9 +145,9 @@
                           color: #FFFFFF;
                           border: none;
                         "
-                      v-if="consultant.consultant_schedules.length === 0"
+                      v-if="consultant.consultant_schedules.filter(schedule => schedule.type === consultantType).length === 0"
 
-                      :disabled="consultant.consultant_schedules.length === 0"
+                      :disabled="consultant.consultant_schedules.filter(schedule => schedule.type === consultantType).length === 0"
 
                       @click.native="seeProfile(consultant)"
                   >
@@ -163,7 +163,7 @@
                           border: none;
                         "
 
-                      v-if="consultant.consultant_schedules.length !== 0"
+                      v-if="consultant.consultant_schedules.filter(schedule => schedule.type === consultantType).length !== 0"
 
                       @click.native="seeProfile(consultant)"
                   >
