@@ -277,6 +277,8 @@ export default {
       let orderResponse = await postJson(`${endpoint}/api/order`, stringifyPostData)
       if (orderResponse.success) {
         window.location.href = orderResponse.data.transaction_redirect_url;
+      } else {
+        alert(orderResponse.message)
       }
     },
   },
