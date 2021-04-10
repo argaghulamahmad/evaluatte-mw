@@ -105,53 +105,33 @@
                   multiple
               >
                 <v-expansion-panel>
-                  <v-expansion-panel-header><h4>Prosedur Standar Operasional</h4></v-expansion-panel-header>
+                  <v-expansion-panel-header><h4>{{ this.sop.title }}</h4></v-expansion-panel-header>
                   <v-expansion-panel-content>
                     <div>
                       <div class="mb-4">
                         <h4>Tujuan</h4>
                         <p>
-                          Memberikan pemahaman tentang CV dan teknik interview yang tepat, serta membuat peluang yang
-                          lebih besar untuk diterima di suatu pekerjaan.
+                          {{ this.sop.tujuan.text }}
                         </p>
                       </div>
                       <div class="mb-4">
                         <h4>Kewajiban</h4>
-                        <div>
+                        <div v-for="(item, index) in this.sop.kewajiban.contents" :key="'kewajiban'+index">
                           <ul>
-                            <li>User wajib mendaftar dan melakukan pembayaran sebelum melakukan konsultasi (1 hari
-                              sebelumnya)
+                            <li>{{
+                                item
+                              }}
                             </li>
-                            <li>User harus menyiapkan segala pertanyaan, bahan diskusi, dll sebelum sesi konsultasi,
-                              agar sesi konsultasi dapat berjalan efektif
-                            </li>
-                            <li>User wajib membaca SOP yang berlaku</li>
-                            <li>User harus memilih jadwal konsultasi sesuai dengan jadwal konsultan</li>
-                            <li>User wajib berkomunikasi dengan sopan</li>
-                            <li>User hanya dapat menanyakan pertanyaan sesuai konteks konsultasi</li>
-                            <li>Apabila user menanyakan pertanyaan di luar konteks konsultasi, maka user akan
-                              mendapatkan penalti.
-                            </li>
-                            <li>Apabila user mendapatkan penalti sebanyak 3x, maka konsultan berhak mengakhiri sesi
-                              konsultasi meskipun waktu konsultasi belum berakhir.
-                            </li>
-                            <li>User wajib mengisi dan menilai kinerja konsultan</li>
                           </ul>
                         </div>
                       </div>
                       <div class="mb-4">
                         <h4>Hak</h4>
-                        <div>
+                        <div v-for="(item, index) in this.sop.hak.contents" :key="'hak'+index">
                           <ul>
-                            <li>User berhak memilih konsultan yang diinginkan (selama konsultan tersebut masih
-                              tersedia).
-                            </li>
-                            <li>User berhak bertanya tentang apa pun (selama masih dalam konteks konsultasi).</li>
-                            <li>User berhak mendapat waktu konsultasi sesuai dengan yang telah ditentukan.</li>
-                            <li>User berhak memberi penilaian (kepada konsultan) sesuai dengan yang dirasakan selama
-                              sesi konsultasi.
-                            </li>
-                            <li>User berhak mendapatkan resume hasil konsultasi.</li>
+                            <li>{{
+                              item
+                              }}</li>
                           </ul>
                         </div>
                       </div>
@@ -195,6 +175,7 @@
 <script>
 import S3FileUpload from "@/components/S3FileUpload";
 import {postJson} from "@/utils/fetch";
+import data from '@/../data'
 
 export default {
   name: "Checkout",
@@ -224,6 +205,8 @@ export default {
       this.formattedConsultantPrice = this.consultant.formatted_interview_price
       this.consultantPrice = this.consultant.interview_price
     }
+
+    console.log(this.sop)
   },
   data: () => ({
     emailRules: [
@@ -251,7 +234,9 @@ export default {
 
     consultant: {},
     consultantSchedules: [],
-    consultantScheduleId: {}
+    consultantScheduleId: {},
+
+    sop: data.sop
   }),
   methods: {
     hasHistory: () => window.history.length > 2,
