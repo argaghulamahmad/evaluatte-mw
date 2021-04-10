@@ -1,11 +1,11 @@
 {
-  "title": "Prosedur Standar Operasional",
-  "contents": [
-    {
+  "sop": {
+    "title": "Prosedur Standar Operasional",
+    "tujuan": {
       "title": "Tujuan",
       "text": "Memberikan pemahaman tentang CV dan teknik interview yang tepat, serta membuat peluang yang lebih besar untuk diterima di suatu pekerjaan."
     },
-    {
+    "kewajiban": {
       "title": "Kewajiban",
       "text": "",
       "contents": [
@@ -20,7 +20,7 @@
         "User wajib mengisi dan menilai kinerja konsultan"
       ]
     },
-    {
+    "hak": {
       "title": "Hak",
       "text": "",
       "contents": [
@@ -31,5 +31,5 @@
         "User berhak mendapatkan resume hasil konsultasi."
       ]
     }
-  ]
+  }
 }
