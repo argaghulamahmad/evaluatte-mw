@@ -1,23 +1,23 @@
 {
   "sop": {
-    "title": "Prosedur Standar Operasional",
+    "title": "Syarat & Ketentuan",
     "tujuan": {
       "title": "Tujuan",
-      "text": "Memberikan pemahaman tentang CV dan teknik interview yang tepat, serta membuat peluang yang lebih besar untuk diterima di suatu pekerjaan."
+      "text": "Memberikan pemahaman mengenai bagaimana cara seorang rekruter mencari kandidat melalui CV & Interview agar user dapat lebih siap menghadapi persaingan pencarian kerja."
     },
-    "kewajiban": {
-      "title": "Kewajiban",
+    "ketentuan": {
+      "title": "Ketentuan",
       "text": "",
       "contents": [
-        "User wajib mendaftar dan melakukan pembayaran sebelum melakukan konsultasi (1 hari sebelumnya)",
+        "User wajib mendaftar dan melakukan pembayaran dalam 1 jam setelah pendaftaran",
         "User harus menyiapkan segala pertanyaan, bahan diskusi, dll sebelum sesi konsultasi, agar sesi konsultasi dapat berjalan efektif",
-        "User wajib membaca SOP yang berlaku",
         "User harus memilih jadwal konsultasi sesuai dengan jadwal konsultan",
+        "Konsultasi CV dilakukan selama 30 menit & Interview selama 1 jam",
         "User wajib berkomunikasi dengan sopan",
         "User hanya dapat menanyakan pertanyaan sesuai konteks konsultasi",
         "Apabila user menanyakan pertanyaan di luar konteks konsultasi, maka user akan mendapatkan penalti.",
         "Apabila user mendapatkan penalti sebanyak 3x, maka konsultan berhak mengakhiri sesi konsultasi meskipun waktu konsultasi belum berakhir.",
-        "User wajib mengisi dan menilai kinerja konsultan"
+        "User wajib mengisi dan menilai kinerja konsultan setelah proses konsultasi"
       ]
     },
     "hak": {
@@ -25,8 +25,8 @@
       "text": "",
       "contents": [
         "User berhak memilih konsultan yang diinginkan (selama konsultan tersebut masih tersedia).",
-        "User berhak bertanya tentang apa pun (selama masih dalam konteks konsultasi).",
-        "User berhak mendapat waktu konsultasi sesuai dengan yang telah ditentukan.",
+        "User berhak bertanya tentang & sebanyak apa pun (selama masih dalam konteks konsultasi).",
+        "User berhak mendapatkan waktu konsultasi sesuai dengan yang telah ditentukan.",
         "User berhak memberi penilaian (kepada konsultan) sesuai dengan yang dirasakan selama sesi konsultasi.",
         "User berhak mendapatkan resume hasil konsultasi."
       ]

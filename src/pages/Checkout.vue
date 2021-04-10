@@ -115,8 +115,8 @@
                         </p>
                       </div>
                       <div class="mb-4">
-                        <h4>Kewajiban</h4>
-                        <div v-for="(item, index) in this.sop.kewajiban.contents" :key="'kewajiban'+index">
+                        <h4>Ketentuan</h4>
+                        <div v-for="(item, index) in this.sop.ketentuan.contents" :key="'ketentuan'+index">
                           <ul>
                             <li>{{
                                 item
