@@ -1,10 +1,8 @@
-const fetchJson = async url => {
+const fetchJson = async (url, headers) => {
   // eslint-disable-next-line no-useless-catch
   try {
     const response = await fetch(url, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: headers,
       method: 'GET',
     });
 
@@ -14,14 +12,12 @@ const fetchJson = async url => {
   }
 };
 
-const postJson = async (url, data) => {
+const postJson = async (url, data, headers) => {
   // eslint-disable-next-line no-useless-catch
   try {
     const response = await fetch(url, {
       body: data,
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: headers,
       method: 'POST',
     });
 
