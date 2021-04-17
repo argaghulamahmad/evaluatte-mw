@@ -97,7 +97,7 @@
                 <S3FileUpload :obj="clientResume"
                               fieldName="cv_url"
                               directory="CV"
-                              label="Berkas CV Anda" />
+                              label="Berkas CV Anda"/>
               </v-card-text>
               <v-divider class="mt-12"></v-divider>
               <v-expansion-panels
@@ -130,8 +130,9 @@
                         <div v-for="(item, index) in this.sop.hak.contents" :key="'hak'+index">
                           <ul>
                             <li>{{
-                              item
-                              }}</li>
+                                item
+                              }}
+                            </li>
                           </ul>
                         </div>
                       </div>
@@ -259,7 +260,11 @@ export default {
       let stringifyPostData = JSON.stringify(postData);
       const endpoint = process.env.VUE_APP_ENDPOINT
 
-      let orderResponse = await postJson(`${endpoint}/api/order`, stringifyPostData)
+      let orderResponse = await postJson(`${endpoint}/api/order`, stringifyPostData, {
+        'Accept': 'application/json',
+        'Authorization': `Basic ${this.authServerKeyEncoded}`,
+        'Content-Type': 'application/json',
+      })
       if (orderResponse.success) {
         window.location.href = orderResponse.data.transaction_redirect_url;
       } else {
@@ -268,11 +273,14 @@ export default {
     },
   },
   computed: {
+    authServerKeyEncoded() {
+      return process.env.VUE_APP_MIDTRANS_SERVER_KEY_BASE64_ENCODED;
+    },
     notYetBookedConsultantSchedules() {
       return this.consultantSchedules.filter((schedule) => {
         return schedule.is_booked === false;
       });
-    }
+    },
   },
 }
 </script>

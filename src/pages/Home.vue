@@ -159,7 +159,9 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     if (this.$store.state.testimonials.length === 0) {
-      this.testimonials = await fetchJson(`${endpoint}/api/testimonials/`);
+      this.testimonials = await fetchJson(`${endpoint}/api/testimonials/`, {
+        'Content-Type': 'application/json'
+      });
       this.setTestimonialsToVuex(this.testimonials);
     }
 
