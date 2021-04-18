@@ -194,9 +194,7 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT;
 
     if (this.$store.state.consultants.length === 0) {
-      this.consultants = await fetchJson(`${endpoint}/api/consultants/`, {
-        'Content-Type': 'application/json'
-      });
+      this.consultants = await fetchJson(`${endpoint}/api/consultants/`);
       this.setConsultantsToVuex(this.consultants);
     }
 
