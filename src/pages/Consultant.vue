@@ -8,7 +8,7 @@
           fixed
           prominent
           shrink-on-scroll
-          src="https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/layanan+kami+-+interview-min.png"
+          src="https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/layanan_kami_-_interview-min.png"
       >
         <template v-slot:img="{ props }">
           <v-img
