@@ -6,7 +6,7 @@
         dark
         shrink-on-scroll
         prominent
-        src="https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/Header+ke+1.png"
+        src="https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/Headerke1.png"
         fade-img-on-scroll
     >
       <template v-slot:img="{ props }">
@@ -170,22 +170,22 @@ export default {
   data() {
     return {
       banners: [
-        'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/banner+cv.png',
-        'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/banner+interview.png',
+        'https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/banner_cv.png',
+        'https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/banner_interview.png',
       ],
       services: [
         {
-          icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+cv+1.png',
+          icon: 'https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/icon_cv_1.png',
           name: 'Konsultasi CV',
           url: '/consultants/CV',
         },
         {
-          icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+interviw+1.png',
+          icon: 'https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/icon_interviw_1.png',
           name: 'Konsultasi Interview',
           url: '/consultants/Interview',
         },
         {
-          icon: 'https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/icon+webinar+1.png',
+          icon: 'https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/icon_webinar_1.png',
           name: 'Webinar',
           url: '/consultants/Webinar',
         },

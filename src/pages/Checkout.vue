@@ -7,7 +7,7 @@
           dark
           shrink-on-scroll
           prominent
-          src="https://evaluatte-assets.s3-ap-southeast-1.amazonaws.com/header+layanan+kami+-+new-min.png"
+          src="https://evaluatte.argaghulamahmad.dev/media/banner/2021/09/04/headerlayanankami-new-min.png"
           fade-img-on-scroll
       >
         <template v-slot:img="{ props }">
