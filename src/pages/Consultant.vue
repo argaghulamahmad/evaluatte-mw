@@ -188,20 +188,20 @@ export default {
   props: ['id'],
   async created() {
     if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
-      await this.$router.push(`/consultants/cv`)
+      // Direct links are not supported yet: the profile is only available from the consultant list.
+      await this.$router.push(`/consultants/CV`)
+      return
     }
 
-    if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
-      this.consultant = this.$store.state.selectedConsultant;
-      this.consultant_schedules = this.consultant.consultant_schedules;
-    }
+    this.consultant = this.$store.state.selectedConsultant;
+    this.consultant_schedules = this.consultant.consultant_schedules || [];
   },
   data() {
     return {
       panel: [],
 
       consultant: {},
-      consultant_schedules: {}
+      consultant_schedules: []
     }
   },
   methods: {

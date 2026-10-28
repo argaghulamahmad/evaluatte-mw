@@ -39,7 +39,7 @@ export default {
 }
 </script>
 <style>
-span {
+.v-item-group.v-bottom-navigation span {
   font-size: 80%;
 }
 

@@ -159,8 +159,13 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT
 
     if (this.$store.state.testimonials.length === 0) {
-      this.testimonials = await fetchJson(`${endpoint}/api/testimonials/`);
-      this.setTestimonialsToVuex(this.testimonials);
+      try {
+        this.testimonials = await fetchJson(`${endpoint}/api/testimonials/`);
+        this.setTestimonialsToVuex(this.testimonials);
+      } catch (error) {
+        // Home still renders without testimonials when the API is unreachable.
+        console.error('Gagal memuat testimoni', error);
+      }
     }
 
     if (this.$store.state.testimonials.length !== 0) {

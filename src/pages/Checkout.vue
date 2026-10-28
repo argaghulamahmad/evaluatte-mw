@@ -156,7 +156,8 @@
                         color: #FFFFFF;
                         border: none;
                       "
-                    :disabled="!isTocAccepted"
+                    :disabled="!isTocAccepted || submitting"
+                    :loading="submitting"
                     @click="submit"
                 >
                   Bayar
@@ -174,39 +175,30 @@
 
 <script>
 import S3FileUpload from "@/components/S3FileUpload";
-import {postJson} from "@/utils/fetch";
+import {fetchJson, postJson} from "@/utils/fetch";
 import data from '@/../data'
 
 export default {
   name: "Checkout",
   components: {S3FileUpload},
   async created() {
-    if (Object.keys(this.$store.state.selectedConsultant).length === 0) {
+    if (Object.keys(this.$store.state.selectedConsultant).length === 0 || this.$store.state.selectedConsultantType === '') {
       await this.$router.push(`/consultants/CV`)
+      return
     }
 
-    if (this.$store.state.selectedConsultantType === '') {
-      await this.$router.push(`/consultants/CV`)
-    }
+    this.consultantType = this.$store.state.selectedConsultantType;
+    this.consultant = this.$store.state.selectedConsultant;
+    this.consultantSchedules = this.schedulesOfType(this.consultant);
 
-    if (this.$store.state.selectedConsultantType !== '') {
-      this.consultantType = this.$store.state.selectedConsultantType;
-    }
-
-    if (Object.keys(this.$store.state.selectedConsultant).length !== 0) {
-      this.consultant = this.$store.state.selectedConsultant;
-      this.consultantSchedules = this.consultant.consultant_schedules.filter(schedule => schedule.type === this.consultantType);
-    }
-
+    // Price shown here is display only; the backend reads the real price from the consultant record.
     if (this.consultantType === 'CV') {
       this.formattedConsultantPrice = this.consultant.formatted_cv_price
-      this.consultantPrice = this.consultant.cv_price
     } else if (this.consultantType === 'INTERVIEW') {
       this.formattedConsultantPrice = this.consultant.formatted_interview_price
-      this.consultantPrice = this.consultant.interview_price
     }
 
-    console.log(this.sop)
+    await this.refreshAvailability();
   },
   data: () => ({
     emailRules: [
@@ -229,42 +221,76 @@ export default {
     isTocAccepted: false,
 
     consultantType: '',
-    consultantPrice: 0,
     formattedConsultantPrice: '',
 
     consultant: {},
     consultantSchedules: [],
-    consultantScheduleId: {},
+    consultantScheduleId: null,
+
+    submitting: false,
 
     sop: data.sop
   }),
   methods: {
     hasHistory: () => window.history.length > 2,
+
+    schedulesOfType(consultant) {
+      return (consultant.consultant_schedules || []).filter(schedule => schedule.type === this.consultantType);
+    },
+
+    // Cached store data goes stale. Re-read availability so already-booked slots are not offered.
+    async refreshAvailability() {
+      try {
+        const endpoint = process.env.VUE_APP_ENDPOINT;
+        const consultants = await fetchJson(`${endpoint}/api/consultants/`);
+        const fresh = consultants.find(item => item.id === this.consultant.id);
+        if (fresh) {
+          this.consultantSchedules = this.schedulesOfType(fresh);
+        }
+      } catch (error) {
+        console.error('Gagal memuat jadwal terbaru', error);
+      }
+    },
+
     async submit() {
-      this.clientResumeUrl = this.clientResume['cv_url']
-
-      const postData = {
-        clientEmail: this.clientEmail,
-        clientName: this.clientName,
-        clientPhoneNumber: this.clientPhoneNumber,
-        clientProblem: this.clientProblem,
-        clientResumeUrl: this.clientResumeUrl,
-        consultantId: this.consultant.id,
-        consultantName: this.consultant.full_name,
-        consultantPrice: this.consultantPrice,
-        consultantScheduleId: this.consultantScheduleId,
-        consultantType: this.consultantType,
+      if (this.submitting) {
+        return;
+      }
+      if (!this.isFormValid) {
+        alert('Lengkapi data pemesanan terlebih dahulu!');
+        return;
       }
 
-      let stringifyPostData = JSON.stringify(postData);
-      const endpoint = process.env.VUE_APP_ENDPOINT
+      this.submitting = true;
+      try {
+        const postData = {
+          clientEmail: this.clientEmail,
+          clientName: this.clientName,
+          clientPhoneNumber: this.clientPhoneNumber,
+          clientProblem: this.clientProblem,
+          clientResumeUrl: this.clientResume['cv_url'],
+          consultantId: this.consultant.id,
+          consultantName: this.consultant.full_name,
+          consultantScheduleId: this.consultantScheduleId,
+          consultantType: this.consultantType,
+        }
 
-      let orderResponse = await postJson(`${endpoint}/api/order`, stringifyPostData)
-      if (orderResponse.success) {
-        window.location.href = orderResponse.data.transaction_redirect_url;
-      } else {
-        alert(orderResponse.message)
+        const endpoint = process.env.VUE_APP_ENDPOINT;
+        const orderResponse = await postJson(`${endpoint}/api/order`, JSON.stringify(postData));
+
+        if (orderResponse.success) {
+          // Keep `submitting` true while the browser leaves for the payment page.
+          window.location.href = orderResponse.data.transaction_redirect_url;
+          return;
+        }
+
+        alert(orderResponse.message);
+        this.consultantScheduleId = null;
+        await this.refreshAvailability();
+      } catch (error) {
+        alert('Terjadi kendala jaringan. Silahkan coba lagi.');
       }
+      this.submitting = false;
     },
   },
   computed: {
@@ -272,7 +298,16 @@ export default {
       return this.consultantSchedules.filter((schedule) => {
         return schedule.is_booked === false;
       });
-    }
+    },
+
+    isFormValid() {
+      return !!this.clientName
+          && this.emailRules.every(rule => rule(this.clientEmail) === true)
+          && !!this.clientPhoneNumber
+          && !!this.clientProblem
+          && !!this.consultantScheduleId
+          && !!this.clientResume['cv_url'];
+    },
   },
 }
 </script>

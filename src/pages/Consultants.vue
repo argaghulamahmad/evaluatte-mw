@@ -194,8 +194,12 @@ export default {
     const endpoint = process.env.VUE_APP_ENDPOINT;
 
     if (this.$store.state.consultants.length === 0) {
-      this.consultants = await fetchJson(`${endpoint}/api/consultants/`);
-      this.setConsultantsToVuex(this.consultants);
+      try {
+        this.consultants = await fetchJson(`${endpoint}/api/consultants/`);
+        this.setConsultantsToVuex(this.consultants);
+      } catch (error) {
+        console.error('Gagal memuat daftar konsultan', error);
+      }
     }
 
     if (this.$store.state.consultants.length !== 0) {
@@ -204,7 +208,7 @@ export default {
   },
   data() {
     return {
-      consultants: {},
+      consultants: [],
       consultantType: '',
     }
   },
